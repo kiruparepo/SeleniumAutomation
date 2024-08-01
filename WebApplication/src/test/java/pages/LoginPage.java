@@ -13,12 +13,18 @@ public class LoginPage extends GenericWrappers {
 	@FindBy(xpath = "//input[@name='user_email']")
 	private WebElement emailField;
 	
-	@FindBy(xpath = "//input[@name='user_email']")
-	private WebElement userNameField;
+	@FindBy(xpath = "//input[@name='password']")
+	private WebElement passwordField;
 
-	@FindBy(xpath = "//android.widget.TextView[@text='Sign In']")
-	private WebElement signInButton;
+	@FindBy(xpath = "//div[text()='Submit']")
+	private WebElement submitButton;
 
+	@FindBy(xpath = "//div[text()='Create Account']")
+	private WebElement createAccountLink;
+	
+	@FindBy(xpath = "//div[text()='Forget Password']")
+	private WebElement forgetPasswordLink;
+	
 	// Constructor to initialize the driver and instantiate elements using
 	
 	public LoginPage(WebDriver driver) {
@@ -29,14 +35,28 @@ public class LoginPage extends GenericWrappers {
 	// Methods to be used as part of loginpage.
 	
 	public void enterEmailId(String email) {
-		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-		entervaluebyXpath(userNameField, methodName, email);
+		entervaluebyXpath(emailField, "User Email ID ", email);
+	}
+	
+	
+	public void enterPassword(String password) {
+		entervaluebyXpath(passwordField, "User Email ID ", password);
 	}
 
-	public void clickSignInButton() {
-		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-		clickbyXpath(signInButton, methodName);
+	
+	public void clickSubmitButton() {
+		clickbyXpath(submitButton, "Submit Button");
 		
 	}
 
+	
+	public void clickForgetPasswordLink() {
+		clickbyXpath(forgetPasswordLink, " Forget Password ");
+		
+	}
+	
+	public void clickCreateAccountLink() {
+		clickbyXpath(createAccountLink, " Create Account ");
+		
+	}
 }
