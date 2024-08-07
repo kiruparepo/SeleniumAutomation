@@ -7,12 +7,12 @@
         <methods>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
-          <include name="beforeTest"/>
           <include name="afterMethod"/>
+          <include name="beforeTest"/>
+          <include name="startTestCase"/>
+          <include name="afterTest"/>
           <include name="afterSuite"/>
           <include name="createAccount"/>
-          <include name="afterTest"/>
-          <include name="startTestCase"/>
         </methods>
       </class> <!-- testcases.TC01_CreateAcount -->
     </classes>
