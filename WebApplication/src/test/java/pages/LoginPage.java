@@ -35,12 +35,12 @@ public class LoginPage extends GenericWrappers {
 	// Methods to be used as part of loginpage.
 	
 	public void enterEmailId(String email) {
-		entervaluebyXpath(emailField, "User Email ID ", email);
+		enterValuebyXpath(emailField, "User Email ID ", email);
 	}
 	
 	
 	public void enterPassword(String password) {
-		entervaluebyXpath(passwordField, "User Email ID ", password);
+		enterValuebyXpath(passwordField, "User Email ID ", password);
 	}
 
 	
@@ -59,4 +59,5 @@ public class LoginPage extends GenericWrappers {
 		clickbyXpath(createAccountLink, " Create Account ");
 		
 	}
+	
 }

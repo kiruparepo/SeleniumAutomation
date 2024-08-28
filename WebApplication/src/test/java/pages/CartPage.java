@@ -19,6 +19,7 @@ public class CartPage extends GenericWrappers {
 	    @FindBy(xpath = "//div[text()='Sign up']")
 	    private WebElement signUpButton;
 	    
+	    
 		/*
 		 * @FindBy(id = "loginButton") private WebElement loginButton;
 		 */

@@ -48,21 +48,21 @@ public class CreateAccountPage extends GenericWrappers {
 	    // Methods to interact with elements
 	    
 		public void enterEmailId(String emailId) {
-			entervaluebyXpath(emailField, " Email ID ", emailId);
+			enterValuebyXpath(emailField, " Email ID ", emailId);
 		}
 
 		
 		public void enterUserName(String userName) {
-			entervaluebyXpath(usernameField, " User Name ", userName);
+			enterValuebyXpath(usernameField, " User Name ", userName);
 		}
 
 		public void enterPassword(String password) {
-			entervaluebyXpath(passwordField, " Password ", password);
+			enterValuebyXpath(passwordField, " Password ", password);
 		}
 
 		
 		public void enterConfirmPassword(String confirmPassword) {
-			entervaluebyXpath(confirmPasswordField, "Confirm Password", confirmPassword);
+			enterValuebyXpath(confirmPasswordField, "Confirm Password", confirmPassword);
 		}
 
 		

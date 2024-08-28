@@ -13,7 +13,7 @@ public class HomePage extends GenericWrappers{
 	    
 	 // Locate all elements on the page
 	    
-	    @FindBy(xpath = "//div[@text()='Sign in']")
+	    @FindBy(xpath = "//div[text()='Sign in']")
 	    private WebElement signInButton;
 	    
 	    @FindBy(xpath = "//div[text()='Sign up']")

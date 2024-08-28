@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class GenericWrappers {
 	static ExtentTest test;
 	static ExtentReports report;
 	public String sUrl,primaryWindowHandle,sHubUrl,sHubPort;
-	
+	public JavascriptExecutor jsExecutor;
 	public Properties loadProp() {
 		Properties prop = new Properties();
 		try {
@@ -114,6 +115,7 @@ public class GenericWrappers {
 			bReturn = true;
 
 	} catch (Exception e) {
+			e.printStackTrace();
 			Reporter.reportStep("The Field "+fieldName+" could not be clicked.", "FAIL");
 	}
 	return bReturn;
@@ -154,7 +156,7 @@ public class GenericWrappers {
 	}
 
 
-	public boolean entervaluebyXpath(WebElement xpath, String fieldname, String value) {
+	public boolean enterValuebyXpath(WebElement xpath, String fieldname, String value) {
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
@@ -162,6 +164,7 @@ public class GenericWrappers {
 			Reporter.reportStep(fieldname+" field is entered with value : " +value, "PASS");
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Reporter.reportStep("The value: "+value+" could not be entered.", "FAIL");
 		}
 		return bReturn;
@@ -210,13 +213,15 @@ public class GenericWrappers {
 		try {
 			expWait(xpath);
 		    String sText = xpath.getText();
-		    if (sText.trim().contains(text)){
+		    if (sText.trim().equalsIgnoreCase(text)){
 			Reporter.reportStep("The text: "+sText+" contains the value :"+text, "PASS");
 			bReturn = true;
-			System.out.println(sText.replaceAll("[^0-9]", ""));
-		}
-		} catch (Exception e) {
+		    }
+			else {
 				Reporter.reportStep("The text: did not contain the value :"+text, "FAIL");
+			}
+		} catch (Exception e) {
+				
 		}
 		return bReturn;
 	}
@@ -236,12 +241,39 @@ public class GenericWrappers {
 	
 	public static void expWait(WebElement xpath) {
 		try {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(xpath));
 		}
 		catch(Exception e) {
-			System.out.println(e); 
+			e.printStackTrace();
 		}
 	
+	}
+	
+	protected void scrollToElement(WebElement element) {
+		jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
+        try {
+            Thread.sleep(1000); // Adding a slight delay to allow the scroll to complete
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public boolean verifyElementVisible(WebElement xpath, String fieldName){
+		boolean bReturn = false;
+		try {
+			expWait(xpath);
+		    if (xpath.isDisplayed()){
+			Reporter.reportStep("Page contains "+ fieldName, "PASS");
+			bReturn = true;
+		    }
+			else {
+				Reporter.reportStep("Page Doesn't contains "+ fieldName, "FAIL");
+			}
+		} catch (Exception e) {
+				
+		}
+		return bReturn;
 	}
 }

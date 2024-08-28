@@ -3,18 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.TC01_CreateAcount">
+      <class name="testcases.TC_04_TakeChapterAssessment">
         <methods>
           <include name="beforeMethod"/>
+          <include name="createAccount"/>
           <include name="beforeSuite"/>
+          <include name="startTestCase"/>
           <include name="afterMethod"/>
           <include name="beforeTest"/>
-          <include name="startTestCase"/>
           <include name="afterTest"/>
           <include name="afterSuite"/>
-          <include name="createAccount"/>
         </methods>
-      </class> <!-- testcases.TC01_CreateAcount -->
+      </class> <!-- testcases.TC_04_TakeChapterAssessment -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

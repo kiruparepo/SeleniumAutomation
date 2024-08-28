@@ -8,7 +8,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
 
-public class TC01_CreateAcount extends WebApplicationWrappers {
+public class TC_01_CreateAcount extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -34,7 +34,7 @@ public class TC01_CreateAcount extends WebApplicationWrappers {
 		createacpage.enterPassword("Welcome@123");
 		createacpage.enterConfirmPassword("Welcome@123");
 		createacpage.clickTCCheckbox();
-		//createacpage.clickSubmitButton();
+		createacpage.clickSubmitButton();
 		
 	}
 
