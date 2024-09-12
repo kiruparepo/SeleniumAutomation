@@ -9,6 +9,7 @@ import pages.AssessmentPage;
 import pages.CourseContentPage;
 import pages.CreateAccountPage;
 import pages.HomePage;
+import pages.LandingPage;
 import pages.LoginPage;
 import pages.MyCoursesPage;
 import pages.StudentHomePage;
@@ -23,6 +24,7 @@ public class TC_03_CompleteVideo extends WebApplicationWrappers {
 	StudentHomePage studenthomepage;
 	MyCoursesPage mycoursepage;
 	AssessmentPage assessmentpage;
+	LandingPage landingpage;
 	
 	@BeforeClass
 	public void startTestCase() {
@@ -41,8 +43,9 @@ public class TC_03_CompleteVideo extends WebApplicationWrappers {
 		studenthomepage=new StudentHomePage(driver);
 		mycoursepage=new MyCoursesPage(driver);
 		assessmentpage=new AssessmentPage(driver);
+		landingpage = new LandingPage(driver);
 		
-		homepage.clickSignInButton();
+		landingpage.clickSignInButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();

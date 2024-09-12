@@ -9,13 +9,40 @@ import org.openqa.selenium.support.PageFactory;
 
 import wrappers.GenericWrappers;
 
-public class CourseContentPage extends GenericWrappers {
-
-	private WebDriver driver;
-	public JavascriptExecutor jsExecutor;
-			
-	// Locate all elements on the page
+public class CourseContentPage extends GenericWrappers{
+    
+    private WebDriver driver;
+    public JavascriptExecutor jsExecutor;
+    
+    //Locate all elements on the page
+    
+    @FindBy(xpath = "//div[text()='Go to Course']")
+    private WebElement gotoCourseButton;
+    
+    @FindBy(xpath = "//div[text()='Sign up']")
+    private WebElement signUpButton;
+    
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[2]")
+    private WebElement topicVideoButton;
+    
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[2]")
+    private WebElement topicAssessmentButton;
+    
+    @FindBy(xpath = "//div[contains(@class,'video_play_progress')]")
+    private WebElement videoProgressBar;
+    
+    @FindBy(xpath = "//*[@color='#21B573']")
+	private WebElement greenTickField;
 	
+	@FindBy(xpath = "//div[contains(@class,'Course_Content_chapter_Assessment_View')]")
+	private WebElement chapterAssessmentButton;
+	
+	@FindBy(xpath = "//div[contains(@class,'Exam_Instruction_submit_button')]/div")
+	private WebElement examInstStartExamButton;
+    
+    @FindBy(xpath = "//*[@role='status']")
+	private WebElement assessmentToastMessage;
+    
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_chapter_Name_Text')])[1]")
 	private WebElement chapterField;
 	
@@ -25,19 +52,35 @@ public class CourseContentPage extends GenericWrappers {
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[1]")
 	private WebElement playVideoButton;
 	
-	@FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[2]")
-	private WebElement topicAssessmentButton;
-	
 	@FindBy(xpath = "//video[contains(@class,'video_video')]")
 	private WebElement videoField;
 	
-	@FindBy(xpath = "//*[@color='#21B573']")
-	private WebElement greenTickField;
-	
-	@FindBy(xpath = "//div[contains(@class,'Course_Content_chapter_Assessment_View')]")
-	private WebElement chapterAssessmentButton;
-	
-	public WebElement getChapterField(String num) {
+    
+    public WebElement chapterTitle(int chapternum)
+    {
+    	return driver.findElement(By.xpath("(//div[contains(@class,'Course_Content_chapter_Name_Text')])["+chapternum+"]"));
+    }
+    
+    public WebElement videoField(int topicnum)
+    {
+    	return driver.findElement(By.xpath("(//div[contains(@class,'Course_Content_topic_Name_Text_View_after_buy')])["+topicnum+"]"));
+    }
+    
+    public WebElement topicTitle(int chapternum)
+    {
+    	return driver.findElement(By.xpath("(//div[contains(@class,'Course_Content_topic_Name_Text')]/div)["+chapternum+"]"));
+    }
+ 
+ 
+    
+    public CourseContentPage(WebDriver driver) {
+        this.driver=driver;
+        PageFactory.initElements(driver, this);
+    }
+    
+    // Methods to interact with elements
+    
+    public WebElement getChapterField(String num) {
         String xpath = String.format("(//div[contains(@class,'Course_Content_chapter_Name_Text')])["+num+"]");
         return driver.findElement(By.xpath(xpath));
     }
@@ -46,17 +89,6 @@ public class CourseContentPage extends GenericWrappers {
         String xpath = String.format("(//div[contains(@class,'Course_Content_topic_Name_Text')]/div)["+num+"]");
         return driver.findElement(By.xpath(xpath));
     }
-	
-	@FindBy(xpath = "//div[contains(@class,'Exam_Instruction_submit_button')]/div")
-	private WebElement examInstStartExamButton;
-	
-	@FindBy(xpath = "//*[@role='status']")
-	private WebElement assessmentToastMessage;
-	
-	public CourseContentPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
 	
 	
 	private static String chapternumber1() {
@@ -86,7 +118,8 @@ public class CourseContentPage extends GenericWrappers {
 		clickbyXpath(topicAssessmentButton," Topic Assessment button ");
 		
 	}
-	
+
+    
 	public void completeVideoandVerifyGreenTick() {
 
 	jsExecutor = (JavascriptExecutor) driver;
@@ -108,4 +141,37 @@ public class CourseContentPage extends GenericWrappers {
 		clickbyXpath(examInstStartExamButton," Assessment button ");
 		
 	}
+    
+    public void playTopicVideo() {
+    	clickbyXpath(topicVideoButton," Play Topic level Video ");
+    }
+    
+    public void clickAssessmentButton() {
+    	clickbyXpath(topicAssessmentButton,"Topic Level Assessment Button ");
+    }
+    
+    public void checkToastMeseage(String toast) {
+    	verifyTextContainsByXpath(assessmentToastMessage,toast, "Toast Message");
+    }
+    
+    public void clickGotoCourseButton() {
+    	
+    	clickbyXpath(gotoCourseButton," Go to Course ");
+    }
+    
+    public void clickSignUpButton() {
+    	clickbyXpath(signUpButton, " Sign Up " );
+    }
+    
+    public void clicktoSelectChapter(int chapternum) {
+    	clickbyXpath(chapterTitle(chapternum), " Chapter Field " );
+    }
+    
+    public void clicktoSelectTopic(int topicnum) {
+    	clickbyXpath(topicTitle(topicnum), " Chapter Field " );
+    }
+    
+    
+    
 }
+

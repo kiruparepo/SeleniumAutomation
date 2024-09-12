@@ -56,38 +56,39 @@ public class GenericWrappers {
 		}
 
 	
-	public boolean invokeApp(String browser,String url) {
-		boolean bReturn = false;
-		try {
+	public boolean invokeApp(String browser, String url) {
+			boolean bReturn = false;
+			try {
 
-			DesiredCapabilities dc = new DesiredCapabilities();
-			dc.setBrowserName(browser);
-			dc.setPlatform(Platform.WINDOWS);
-			if(browser.equalsIgnoreCase("chrome")){
-				WebDriverManager.chromedriver().setup();
-				//System.setProperty("webdriver.chrome.driver", "C:\\Users\\invcusor106\\Downloads\\chromedriver_win32 (4)\\chromedriver.exe");
-				driver = new ChromeDriver();
-			} else {
-				WebDriverManager.edgedriver();
-				driver = new EdgeDriver();
+				DesiredCapabilities dc = new DesiredCapabilities();
+				dc.setBrowserName(browser);
+				dc.setPlatform(Platform.WINDOWS);
+				if (browser.equalsIgnoreCase("chrome")) {
+					WebDriverManager.chromedriver().setup();
+					// System.setProperty("webdriver.chrome.driver",
+					// "C:\\Users\\invcusor106\\Downloads\\chromedriver_win32
+					// (4)\\chromedriver.exe");
+					driver = new ChromeDriver();
+				} else {
+					WebDriverManager.edgedriver();
+					driver = new EdgeDriver();
+				}
+
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+				driver.get(url);
+
+				primaryWindowHandle = driver.getWindowHandle();
+
+				Reporter.reportStep("The URL : " + url + " launched successfully in" + browser + " browser ", "PASS");
+				bReturn = true;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				Reporter.reportStep("The browser:" + browser + " could not be launched", "FAIL");
 			}
-
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			driver.get(url);
-
-			primaryWindowHandle = driver.getWindowHandle();
-			
-			Reporter.reportStep("The URL : "+ url + " launched successfully in"+ browser + " browser " , "PASS");
-			bReturn = true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			Reporter.reportStep("The browser:" + browser + " could not be launched", "FAIL");
-		}
-		return bReturn;
+			return bReturn;
 	}
-
 	
 	public static boolean launchApplication(String url) {
 		boolean bReturn = false;
@@ -161,29 +162,30 @@ public class GenericWrappers {
 		try {
 			expWait(xpath);
 			xpath.sendKeys(value);
-			Reporter.reportStep(fieldname+" field is entered with value : " +value, "PASS");
+			Reporter.reportStep(fieldname + " field is entered with value : " + value, "PASS");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			Reporter.reportStep("The value: "+value+" could not be entered.", "FAIL");
+
 		}
 		return bReturn;
 	}
 
 	
 	public boolean entertoiFrame(WebElement xpath, String fName) {
-			boolean bReturn = false;
-			try {
-				expWait(xpath);
-				WebElement frame=xpath;
-			    driver.switchTo().frame(frame);
-				Reporter.reportStep("iframe "+fName+" entered successfully", "PASS");
-				bReturn = true;
+		boolean bReturn = false;
+		try {
+			expWait(xpath);
+			WebElement frame = xpath;
+			driver.switchTo().frame(frame);
+			Reporter.reportStep("iframe " + fName + " entered successfully", "PASS");
+			bReturn = true;
 
-			} catch (Exception e) {
-				Reporter.reportStep("iframe could not be entered :", "FAIL");
-			}
-			return bReturn;
+		} catch (Exception e) {
+			Reporter.reportStep("iframe could not be entered :", "FAIL");
+		}
+		return bReturn;
 	}
 
 	
@@ -191,37 +193,35 @@ public class GenericWrappers {
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
-			List<WebElement> size=new Select(xpath).getOptions();
-			for ( WebElement s: size) {
-			if(s.isEnabled())
-			{
-	        	new Select(xpath).selectByVisibleText(s.getText());
-	        	break;
-	        }
-			Reporter.reportStep("The dropdown: "+ fieldName +" is selected", "PASS");
-			bReturn = true;
+			List<WebElement> size = new Select(xpath).getOptions();
+			for (WebElement s : size) {
+				if (s.isEnabled()) {
+					new Select(xpath).selectByVisibleText(s.getText());
+					break;
+				}
+				Reporter.reportStep("The dropdown: " + fieldName + " is selected", "PASS");
+				bReturn = true;
 			}
 		} catch (Exception e) {
-				Reporter.reportStep("The dropdown: "+ fieldName +" is not selected", "FAIL");
+			Reporter.reportStep("The dropdown: " + fieldName + " is not selected", "FAIL");
 		}
 		return bReturn;
 	}
 	
-	
-	public boolean verifyTextContainsByXpath(WebElement xpath, String text){
+	public boolean verifyTextContainsByXpath(WebElement xpath, String text, String field) {
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
-		    String sText = xpath.getText();
-		    if (sText.trim().equalsIgnoreCase(text)){
-			Reporter.reportStep("The text: "+sText+" contains the value :"+text, "PASS");
-			bReturn = true;
-		    }
+			String sText = xpath.getText();
+			if (sText.trim().contains(text)) {
+				Reporter.reportStep(field +"contains "+ text , "PASS");
+				bReturn = true;
+				}
 			else {
-				Reporter.reportStep("The text: did not contain the value :"+text, "FAIL");
+				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
 			}
 		} catch (Exception e) {
-				
+			e.printStackTrace();
 		}
 		return bReturn;
 	}
@@ -229,8 +229,8 @@ public class GenericWrappers {
 	
 	public void quitBrowser() {
 		try {
-			if(driver!= null) {
-			driver.quit();
+			if (driver != null) {
+				driver.quit();
 			}
 		} catch (Exception e) {
 			Reporter.reportStep("The browser could not be closed.", "FAIL");
@@ -241,13 +241,12 @@ public class GenericWrappers {
 	
 	public static void expWait(WebElement xpath) {
 		try {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(xpath));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+			wait.until(ExpectedConditions.visibilityOf(xpath));
+		} catch (Exception e) {
+			System.out.println(e);
 		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-	
+
 	}
 	
 	protected void scrollToElement(WebElement element) {

@@ -9,6 +9,7 @@ import pages.AssessmentPage;
 import pages.CourseContentPage;
 import pages.CreateAccountPage;
 import pages.HomePage;
+import pages.LandingPage;
 import pages.LoginPage;
 import pages.MyCoursesPage;
 import pages.StudentHomePage;
@@ -23,6 +24,7 @@ public class TC_02_TakeChapterAssessment extends WebApplicationWrappers {
 	StudentHomePage studenthomepage;
 	MyCoursesPage mycoursepage;
 	AssessmentPage assessmentpage;
+	LandingPage landingpage;
 	
 	@BeforeClass
 	public void startTestCase() {
@@ -41,8 +43,9 @@ public class TC_02_TakeChapterAssessment extends WebApplicationWrappers {
 		studenthomepage=new StudentHomePage(driver);
 		mycoursepage=new MyCoursesPage(driver);
 		assessmentpage=new AssessmentPage(driver);
+		landingpage = new LandingPage(driver);
 		
-		homepage.clickSignInButton();
+		landingpage.clickSignInButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
@@ -51,11 +54,11 @@ public class TC_02_TakeChapterAssessment extends WebApplicationWrappers {
 		//coursecontentpage.clickChaptertitle("1");
 		Thread.sleep(2000);
 		coursecontentpage.clickTopicAssessmentButton();
-		assessmentpage.enterAssessmentInput("Yes");
+		assessmentpage.enterFillQuestion("Yes");
 		assessmentpage.clickSubmitButton();
-		assessmentpage.enterAssessmentInput("1");
+		assessmentpage.enterFillQuestion("1");
 		assessmentpage.clickSubmitButton();
-		assessmentpage.enterMcqOption("1");
+		assessmentpage.enterMCQQuestion("1");
 		assessmentpage.clickMCQSubmitButton();
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
@@ -66,7 +69,7 @@ public class TC_02_TakeChapterAssessment extends WebApplicationWrappers {
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
 		assessmentpage.clickAnswerSubmitButton();
-		assessmentpage.checkpercentage("100%");
+		assessmentpage.VerifyPercentage("100%");
 		Thread.sleep(5000);
 		assessmentpage.checkResult("PASS");
 		assessmentpage.clickOkButton();

@@ -9,6 +9,7 @@ import pages.AssessmentPage;
 import pages.CourseContentPage;
 import pages.CreateAccountPage;
 import pages.HomePage;
+import pages.LandingPage;
 import pages.LoginPage;
 import pages.MyCoursesPage;
 import pages.StudentHomePage;
@@ -17,6 +18,7 @@ import wrappers.WebApplicationWrappers;
 
 public class TC_04_TakeChapterAssessment extends WebApplicationWrappers {
 	LoginPage loginpage;
+	LandingPage landingpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
 	CourseContentPage coursecontentpage;
@@ -41,8 +43,9 @@ public class TC_04_TakeChapterAssessment extends WebApplicationWrappers {
 		studenthomepage=new StudentHomePage(driver);
 		mycoursepage=new MyCoursesPage(driver);
 		assessmentpage=new AssessmentPage(driver);
+		landingpage = new LandingPage(driver);
 		
-		homepage.clickSignInButton();
+		landingpage.clickSignUpButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
@@ -73,7 +76,7 @@ public class TC_04_TakeChapterAssessment extends WebApplicationWrappers {
 		assessmentpage.clickCheckBox();
 		
 		assessmentpage.clickAnswerSubmitButton();
-		assessmentpage.checkpercentage("100%");
+		assessmentpage.VerifyPercentage("100%");
 		
 		Thread.sleep(5000);
 		

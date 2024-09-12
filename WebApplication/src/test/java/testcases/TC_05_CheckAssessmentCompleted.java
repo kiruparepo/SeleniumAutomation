@@ -9,6 +9,7 @@ import pages.AssessmentPage;
 import pages.CourseContentPage;
 import pages.CreateAccountPage;
 import pages.HomePage;
+import pages.LandingPage;
 import pages.LoginPage;
 import pages.MyCoursesPage;
 import pages.StudentHomePage;
@@ -17,6 +18,7 @@ import wrappers.WebApplicationWrappers;
 
 public class TC_05_CheckAssessmentCompleted extends WebApplicationWrappers {
 	LoginPage loginpage;
+	LandingPage landingpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
 	CourseContentPage coursecontentpage;
@@ -34,6 +36,7 @@ public class TC_05_CheckAssessmentCompleted extends WebApplicationWrappers {
 	@Test
 	public void createAccount() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
+		
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -41,8 +44,9 @@ public class TC_05_CheckAssessmentCompleted extends WebApplicationWrappers {
 		studenthomepage=new StudentHomePage(driver);
 		mycoursepage=new MyCoursesPage(driver);
 		assessmentpage=new AssessmentPage(driver);
+		landingpage = new LandingPage(driver);
 		
-		homepage.clickSignInButton();
+		landingpage.clickSignInButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();

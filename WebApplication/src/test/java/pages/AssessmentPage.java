@@ -11,12 +11,36 @@ import wrappers.GenericWrappers;
 public class AssessmentPage extends GenericWrappers {
 	
 	 private WebDriver driver;
+		
+		@FindBy(xpath = "//input[contains(@class,'Assessment_answerInput')]")
+		private WebElement enterFillQuestion;
+
+		@FindBy(xpath = "//div[contains(@class,'Assessment_submitButton')]")
+		private WebElement SubmitButton;
+
+		@FindBy(xpath = "//div[contains(@class,'Assessment_nextButton')]")
+		private WebElement nextButton;
+
+		@FindBy(xpath = "//div[contains(@class,'Assessment_over_All_Submit_Button')]")
+		private WebElement overAllSubmitButton;
+
+		@FindBy(xpath = "(//div[contains(@class,'Assessment_optionKey')])[1]")
+		private WebElement mcqOption1;
+
+		@FindBy(xpath = "//input[@type='checkbox']")
+		private WebElement popUpCheckbox;
 	 
+		@FindBy(xpath = "//div[contains(@class,'ModalComponent_submit_button_Text')]")
+		private WebElement popUpSubmitButton;
+		
+		@FindBy(xpath = "(//div[contains(@class,'ScoreCardModal_percentage')])[3]")
+		private WebElement checkPercentage;
+		
+		@FindBy(xpath = "//div[contains(@class,'ScoreCardModal_button_view')]")
+		private WebElement okayButton;
+		
 		@FindBy(xpath = "// input[contains(@class,'Assessment_answerInput')]")
 		private WebElement assessementInputBox;		
-
-		@FindBy(xpath = "//div[text()='Over All Submit']")
-		private WebElement overAllSubmitButton;
 		
 		@FindBy(xpath = "//div[text()='Submit']")
 		private WebElement submitButton;
@@ -56,7 +80,7 @@ public class AssessmentPage extends GenericWrappers {
 		}
 		
 		
-		public void clickSubmitButton() {
+		public void clickSubmitButton1() {
 			scrollToElement(submitButton);
 			clickbyXpath(submitButton, " Submit Button ");
 			
@@ -83,13 +107,9 @@ public class AssessmentPage extends GenericWrappers {
 			
 		}
 		
-		public void checkpercentage(String percentage) {
-			verifyTextContainsByXpath(percentageField, percentage);
-			
-		}
 		
 		public void checkResult(String result) {
-			verifyTextContainsByXpath(resultField, result);
+			verifyTextContainsByXpath(resultField, " Check Result ", result);
 			
 		}
 		
@@ -98,11 +118,41 @@ public class AssessmentPage extends GenericWrappers {
 			clickbyXpath(submitButton, " Submit Button ");
 			
 		}
-		
-		
-		
-		
-		
-	 
 
-}
+		public void enterFillQuestion(String Answer) {
+			enterValuebyXpath(enterFillQuestion, " Enter Fill Question field ", Answer);
+		}
+
+		public void clickSubmitButton() {
+			clickbyXpath(SubmitButton, " Submit Button ");
+		}
+
+		public void clickNextButton() {
+			clickbyXpath(nextButton, " Next Button ");
+		}
+
+		public void enterMCQQuestion(String Answer) {
+			enterValuebyXpath(mcqOption1, " Enter MCQ Question ", Answer);
+		}
+
+		public void clickOverAllSubmitButton() {
+			clickbyXpath(overAllSubmitButton, " Over All Submit Button ");
+		}
+
+		public void clickPopUpSubmitButton() {
+			clickbyXpath(popUpSubmitButton, " Pop up Submit Button ");
+		}
+
+		public void clickPopUpCheckBox() {
+			clickbyXpath(popUpCheckbox, " Popup Check box ");
+		}
+
+		public void clickOkayButton() {
+			clickbyXpath(okayButton, " Okay Button ");
+		}
+
+		public void VerifyPercentage(String Percentage) {
+			verifyTextContainsByXpath(checkPercentage, Percentage, " The Score Percentage ");
+		}
+
+	}
