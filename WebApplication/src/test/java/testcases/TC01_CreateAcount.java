@@ -4,13 +4,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pages.CreateAccountPage;
-import pages.HomePage;
+import pages.LandingPage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
 
 public class TC01_CreateAcount extends WebApplicationWrappers {
 	LoginPage loginpage;
-	HomePage homepage;
+	LandingPage landingpage;
 	CreateAccountPage createacpage;
 	
 	
@@ -25,10 +25,10 @@ public class TC01_CreateAcount extends WebApplicationWrappers {
 	public void createAccount() {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
-		homepage= new HomePage(driver);
+		landingpage= new LandingPage(driver);
 		createacpage= new CreateAccountPage(driver);
 		
-		homepage.clickSignUpButton();
+		landingpage.clickSignUpButton();
 		createacpage.enterEmailId("testuser5@gmail.com");
 		createacpage.enterUserName("Test User");
 		createacpage.enterPassword("Welcome@123");
