@@ -13,7 +13,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC03_TakeChapterlevelAssessment extends WebApplicationWrappers {
+public class TC_07_TakeChapterlevelAssessment extends WebApplicationWrappers {
 	
 	LoginPage loginpage;
 	LandingPage landingpage;

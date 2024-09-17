@@ -120,6 +120,7 @@ public class AssessmentPage extends GenericWrappers {
 		}
 
 		public void enterFillQuestion(String Answer) {
+			enterFillQuestion.clear();
 			enterValuebyXpath(enterFillQuestion, " Enter Fill Question field ", Answer);
 		}
 

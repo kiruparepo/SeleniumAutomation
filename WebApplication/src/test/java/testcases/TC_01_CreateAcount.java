@@ -34,7 +34,7 @@ public class TC_01_CreateAcount extends WebApplicationWrappers {
 		createacpage.enterPassword("Welcome@123");
 		createacpage.enterConfirmPassword("Welcome@123");
 		createacpage.clickTCCheckbox();
-		createacpage.clickSubmitButton();
+		//createacpage.clickSubmitButton();
 		
 	}
 

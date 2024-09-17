@@ -10,7 +10,7 @@ import pages.LandingPage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
 
-public class TC02_Selectsubject extends WebApplicationWrappers {
+public class TC_06_Selectsubject extends WebApplicationWrappers {
 	
 	LoginPage loginpage;
 	LandingPage landingpage;
