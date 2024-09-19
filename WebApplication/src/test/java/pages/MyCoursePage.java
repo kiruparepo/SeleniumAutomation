@@ -21,12 +21,17 @@ public class MyCoursePage extends WebApplicationWrappers {
 	static ExtentTest test;
 	static ExtentReports report;
 
+	@FindBy(xpath = "//div[text()='Home']//following-sibling::div[1]")
+	private WebElement myCourseButton;
+
+	@FindBy(xpath = "//div[text()='Go to Course']")
+	private WebElement gotoCourseButton;
+
 	public MyCoursePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		this.jsExecutor = (JavascriptExecutor) driver;
 	}
-
 
 	@FindBy(xpath = "//div[contains(text(),'My Courses')]")
 	private WebElement Mycoursebtn;
@@ -77,7 +82,7 @@ public class MyCoursePage extends WebApplicationWrappers {
 
 		Thread.sleep(3000); // Wait for the page to load completely
 		clickbyXpath(Mycoursebtn, "My course button"); // Click the "My Course" button
-		verifyTextContainsByXpath(Mycoursetitle, "My Courses"); // Verify the title is "My Courses"
+		verifyTextContainsByXpath(Mycoursetitle, "My Courses", "My course title "); // Verify the title is "My Courses"
 
 		// Initialize the JavascriptExecutor
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -94,7 +99,7 @@ public class MyCoursePage extends WebApplicationWrappers {
 
 			WebElement courseNameElement = elements.findElement(
 					By.xpath("(//div[contains(@class,'My_Courses_myCourse_CourseName_Text')])[" + i + "]"));
-			
+
 			String courseName = courseNameElement.getText();
 
 			System.out.println("Course Name: " + courseName);
@@ -131,7 +136,7 @@ public class MyCoursePage extends WebApplicationWrappers {
 			js.executeScript("arguments[0].click();", goToCourseBtn);
 
 			// Wait for the course content page to load and verify the course name
-			verifyTextContainsByXpath(coursenamecoursecontentpage, courseName);
+			verifyTextContainsByXpath(coursenamecoursecontentpage, courseName, "Course Content page title");
 
 			WebElement totalcourseCC = driver
 					.findElement(By.xpath("(//div[contains(@class,'Course_Content_doc_Assests_num')])[1]"));
@@ -188,4 +193,13 @@ public class MyCoursePage extends WebApplicationWrappers {
 		}
 
 	}
+
+	public void clickMyCourseButton() {
+		clickbyXpath(myCourseButton, " My Course Button ");
+	}
+
+	public void clickGotoCourseButton() {
+		clickbyXpath(gotoCourseButton, " Goto Course Button ");
+	}
+
 }

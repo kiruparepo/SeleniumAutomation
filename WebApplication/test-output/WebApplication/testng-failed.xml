@@ -3,20 +3,6 @@
 <suite name="Failed suite [WebApplication]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-      <class name="profilePageModule.TC_02_ProfilePage">
-        <methods>
-          <include name="beforeMethod"/>
-          <include name="Profilepage"/>
-          <include name="startTestCase"/>
-          <include name="beforeSuite"/>
-          <include name="beforeTest"/>
-          <include name="afterMethod"/>
-          <include name="afterSuite"/>
-          <include name="afterTest"/>
-        </methods>
-      </class> <!-- profilePageModule.TC_02_ProfilePage -->
-=======
       <class name="testcases.TC_04_TakeChapterAssessment">
         <methods>
           <include name="beforeMethod"/>
@@ -41,7 +27,6 @@
           <include name="afterTest"/>
         </methods>
       </class> <!-- testcases.TC_02_TakeChapterAssessment -->
->>>>>>> f29b48463450f957578a6e1e6582b9693b796e45
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [WebApplication] -->

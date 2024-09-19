@@ -9,6 +9,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +22,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 import utils.Reporter;
-import org.openqa.selenium.WebDriver;
 import java.util.List;
 
 import wrappers.WebApplicationWrappers;
@@ -346,9 +346,9 @@ public class CartPage extends WebApplicationWrappers{
         
 		scrollToElementAndClick(Buynowbtn);
 //		clickbyXpath(Buynowbtn, "Buy now button ");
-		verifyTextContainsByXpath(PaymentOption, "Payment Option");
+		verifyTextContainsByXpath(PaymentOption, "Payment Option","Payment Option");
 		clickbyXpath(paymentCancelbtn, "Payment cancel button");
-		verifyTextContainsByXpath(cartname, attribute);
+		verifyTextContainsByXpath(cartname, attribute,"Cart Name");
 
 	} 
 
@@ -457,9 +457,9 @@ public class CartPage extends WebApplicationWrappers{
 		}
 
 		// Verify the empty cart placeholder and other UI elements after all items are removed
-		verifyTextContainsByXpath(cartplaceholder, "Your cart is empty");
+		verifyTextContainsByXpath(cartplaceholder, "Your cart is empty","Cart Placeholder");
 		clickbyXpath(exploreBtncartpage, "Explorebutton cartpage");
-		verifyTextContainsByXpath(Selectsubject, "Select Subject");
+		verifyTextContainsByXpath(Selectsubject, "Select Subject","Select Subject");
 	}
 
 
@@ -557,8 +557,3 @@ public class CartPage extends WebApplicationWrappers{
 
 
 }		
-
-
-
-
-

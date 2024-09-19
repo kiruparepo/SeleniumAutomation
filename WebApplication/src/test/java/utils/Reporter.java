@@ -2,11 +2,12 @@ package utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
-
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import wrappers.WebApplicationWrappers;
@@ -22,6 +23,9 @@ public class Reporter extends WebApplicationWrappers {
 	private static ExtentTest test;
 	private static ExtentReports extent;
 	private static ExtentSparkReporter htmlReporter;
+	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm");
+	private static LocalDateTime now = LocalDateTime.now();
+	private static String time = now.format(formatter);
 
 	public static void reportStep(String desc, String tcstatus) {
 
@@ -32,7 +36,6 @@ public class Reporter extends WebApplicationWrappers {
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -50,7 +53,7 @@ public class Reporter extends WebApplicationWrappers {
 
 	
 	public static void startResult(){
-		htmlReporter = new ExtentSparkReporter("./reports/Spark.html");
+		htmlReporter = new ExtentSparkReporter("./reports/Spark_"+time+".html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 	}

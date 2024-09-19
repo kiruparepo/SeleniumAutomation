@@ -45,10 +45,8 @@ public class GenericWrappers {
 	static ExtentReports report;
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort, attribute;
 	public JavascriptExecutor jsExecutor;
-//	
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 	
-//	
 	public Properties loadProp() {
 		Properties prop = new Properties();
 		try {
@@ -127,10 +125,11 @@ public class GenericWrappers {
 			Reporter.reportStep(fieldName + " field is clicked Successfully.", "PASS");
 			bReturn = true;
 
-		} catch (Exception e) {
-			Reporter.reportStep("The Field " + fieldName + " could not be clicked.", "FAIL");
-		}
-		return bReturn;
+	} catch (Exception e) {
+			e.printStackTrace();
+			Reporter.reportStep("The Field "+fieldName+" could not be clicked.", "FAIL");
+	}
+	return bReturn;
 
 	}
 
@@ -201,7 +200,8 @@ public class GenericWrappers {
 		return bReturn;
 	}
 
-	public boolean entervaluebyXpath(WebElement xpath, String fieldname, String value) {
+
+	public boolean enterValuebyXpath(WebElement xpath, String fieldname, String value) {
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
@@ -209,7 +209,9 @@ public class GenericWrappers {
 			Reporter.reportStep(fieldname + " field is entered with value : " + value, "PASS");
 
 		} catch (Exception e) {
-			Reporter.reportStep("The value: " + value + " could not be entered.", "FAIL");
+
+			e.printStackTrace();
+			Reporter.reportStep("The value: "+value+" could not be entered.", "FAIL");
 		}
 		return bReturn;
 	}
@@ -254,28 +256,28 @@ public class GenericWrappers {
 				else {
 					Reporter.reportStep("The dropdown: " + fieldName + " is not selected", "FAIL");
 				}
-
 			}
 		} catch (Exception e) {
 			Reporter.reportStep("The dropdown: " + fieldName + " is not selected", "FAIL");
 		}
 		return bReturn;
 	}
-
-	public boolean verifyTextContainsByXpath(WebElement xpath, String text) {
+	
+	public boolean verifyTextContainsByXpath(WebElement xpath, String text, String field) {
+	
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
 			String sText = xpath.getText();
 			if (sText.trim().contains(text)) {
-				Reporter.reportStep("The text: " + sText + " contains the value :" + text, "PASS");
+				Reporter.reportStep(field +"contains "+ text , "PASS");
 				bReturn = true;
-//				System.out.println(sText.replaceAll("[^0-9]", ""));
-			} else {
-				Reporter.reportStep("The text: did not contain the value :" + text, "FAIL");
+				}
+			else {
+				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
 			}
 		} catch (Exception e) {
-//				Reporter.reportStep("The text: did not contain the value :"+text, "FAIL");
+			e.printStackTrace();
 		}
 		return bReturn;
 	}
@@ -298,6 +300,34 @@ public class GenericWrappers {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+
+	}
+	
+	protected void scrollToElements(WebElement element) {
+		jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
+        try {
+            Thread.sleep(1000); // Adding a slight delay to allow the scroll to complete
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public boolean verifyElementVisible(WebElement xpath, String fieldName){
+		boolean bReturn = false;
+		try {
+			expWait(xpath);
+		    if (xpath.isDisplayed()){
+			Reporter.reportStep("Page contains "+ fieldName, "PASS");
+			bReturn = true;
+		    }
+			else {
+				Reporter.reportStep("Page Doesn't contains "+ fieldName, "FAIL");
+			}
+		} catch (Exception e) {
+				
+		}
+		return bReturn;
 	}
 
 	public static void expWaitlong(WebElement xpath) {
@@ -310,12 +340,6 @@ public class GenericWrappers {
 
 	}
 
-//	public String attributevalue(String element,String attribute) throws Exception {
-//		Thread.sleep(3000);
-//		String ele = driver.findElement(By.xpath(element)).getAttribute(attribute );
-//		System.out.println(ele);
-//		return ele;
-//	}
 	public static void attributevalue(WebElement xpath, String attribute, String txt) {
 		try {
 
@@ -353,28 +377,15 @@ public class GenericWrappers {
 
 	public String randomnames(int num) {
 
-		// create a string of all characters
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-		// create random string builder
 		StringBuilder sb = new StringBuilder();
-
-		// create an object of Random class
 		Random random = new Random();
-
-		// specify length of random string
 		int length = num;
 
 		for (int i = 0; i < length; i++) {
 
-			// generate random index number
 			int index = random.nextInt(alphabet.length());
-
-			// get character specified by index
-			// from the string
 			char randomChar = alphabet.charAt(index);
-
-			// append the character to string builder
 			sb.append(randomChar);
 		}
 
@@ -399,23 +410,11 @@ public class GenericWrappers {
 		int length = num;
 
 		for (int i = 0; i < length; i++) {
-			// Generate a random index number within the length of the numbers string
 			int index = random.nextInt(numbers.length());
-
-			// Get the character specified by the random index from the numbers string
 			char randomNum = numbers.charAt(index);
-
-			// Append the character to the StringBuilder
 			sb.append(randomNum);
 		}
-
-		// Convert the StringBuilder to a String
 		String randomString = sb.toString();
-
-		// Print the generated random numbers (optional)
-		System.out.println(randomString);
-
-		// Return the generated random numbers
 		return randomString;
 	}
 
@@ -488,87 +487,87 @@ public class GenericWrappers {
 
 	
 	
-	 public WebElement scrollToElement(WebElement element) {
-		 int maxScrolls = 20; // Maximum number of scroll attempts
-		    int scrollCount = 0;
+	public WebElement scrollToElement(WebElement element) {
+		int maxScrolls = 20; // Maximum number of scroll attempts
+		int scrollCount = 0;
 
-		    while (scrollCount < maxScrolls) {
-		        try {
-		         
-		            
-		            if (element.isDisplayed()) {
-		                System.out.println("Element is now visible: " + element);
-		                Reporter.reportStep("element found", "PASS");
-		                return element;
-		            } else {
-		                jsExecutor.executeScript("window.scrollBy(0, 250);"); // Scroll down by 250 pixels
-		                Thread.sleep(500); // Adding a slight delay to allow the scroll to complete
-		                scrollCount++;
-		            }
-		        } catch (Exception e) {
-		            System.out.println("Exception encountered: " + e.getMessage());
-		            jsExecutor.executeScript("window.scrollBy(0, 250);"); // Continue scrolling if exception occurs
-		            scrollCount++;
-		        }
-		    }
+		while (scrollCount < maxScrolls) {
+			try {
 
-		    System.out.println("Element not found after scrolling " + scrollCount + " times. Locator: " + element);
-		    Reporter.reportStep("element not found ", "FAIL");
-		    return element;
+				if (element.isDisplayed()) {
+					System.out.println("Element is now visible: " + element);
+					Reporter.reportStep("element found", "PASS");
+					return element;
+				} else {
+					jsExecutor.executeScript("window.scrollBy(0, 250);"); // Scroll down by 250 pixels
+					Thread.sleep(500); // Adding a slight delay to allow the scroll to complete
+					scrollCount++;
+				}
+			} catch (Exception e) {
+				System.out.println("Exception encountered: " + e.getMessage());
+				jsExecutor.executeScript("window.scrollBy(0, 250);"); // Continue scrolling if exception occurs
+				scrollCount++;
+			}
 		}
-			
+
+		System.out.println("Element not found after scrolling " + scrollCount + " times. Locator: " + element);
+		Reporter.reportStep("element not found ", "FAIL");
+		return element;
+	}
 	 
-	public void scrollToElementAndClick(WebElement xpath) {
-        int maxScrolls = 20; // Maximum number of scrolls to perform in one direction
-        int scrollCount = 0;
-        boolean isElementFound = false;
+		public void scrollToElementAndClick(WebElement xpath) {
+			int maxScrolls = 20; // Maximum number of scrolls to perform in one direction
+			int scrollCount = 0;
+			boolean isElementFound = false;
 
-        while (scrollCount < maxScrolls) {
-            try {
+			while (scrollCount < maxScrolls) {
+				try {
 //                WebElement element = driver.findElement(locator);
-                if (xpath.isDisplayed()) {
-                	jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
+					if (xpath.isDisplayed()) {
+						jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
 //                    wait.until(ExpectedConditions.elementToBeClickable(xpath));
-                    xpath.click();
-                    System.out.println("Element found and clicked.");
-                    isElementFound = true;
-                    Reporter.reportStep("element found and clicked", "PASS");
-                    break;
-                }
-            } catch (Exception e) {
-                scrollPageDown();
-                scrollCount++;
-            }
-        }
+						xpath.click();
+						System.out.println("Element found and clicked.");
+						isElementFound = true;
+						Reporter.reportStep("element found and clicked", "PASS");
+						break;
+					}
+				} catch (Exception e) {
+					scrollPageDown();
+					scrollCount++;
+				}
+			}
 
-        if (!isElementFound) {
-            scrollCount = 0; // Reset scroll count for scrolling up
-            while (scrollCount < maxScrolls) {
-                try {
+			if (!isElementFound) {
+				scrollCount = 0; // Reset scroll count for scrolling up
+				while (scrollCount < maxScrolls) {
+					try {
 //                    WebElement element = driver.findElement(locator);
-                    if (xpath.isDisplayed()) {
-                        xpath.click();
-                        System.out.println("Element found and clicked.");
-                        isElementFound = true;
-                        break;
-                    }
-                } catch (Exception e) {
-                    scrollPageUp();
-                    scrollCount++;
-                }
-            }
-        }
+						if (xpath.isDisplayed()) {
+							xpath.click();
+							System.out.println("Element found and clicked.");
+							isElementFound = true;
+							break;
+						}
+					} catch (Exception e) {
+						scrollPageUp();
+						scrollCount++;
+					}
+				}
+			}
 
-        if (!isElementFound) {
-        	Reporter.reportStep("element not found", "FAIL");
-            System.out.println("Element not found after scrolling up and down.");
-        }
-    }
+			if (!isElementFound) {
+				Reporter.reportStep("element not found", "FAIL");
+				System.out.println("Element not found after scrolling up and down.");
+			}
+		}
 
+		
     public void scrollPageDown() {
         jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
     }
 
+    
     public void scrollPageUp() {
         jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
     }

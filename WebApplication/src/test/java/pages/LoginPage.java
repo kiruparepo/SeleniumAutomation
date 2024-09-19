@@ -34,11 +34,11 @@ public class LoginPage extends GenericWrappers {
 	}
 
 	public void enterEmailId(String email) {
-		entervaluebyXpath(emailField, "User Email ID ", email);
+		enterValuebyXpath(emailField, "User Email ID ", email);
 	}
 
 	public void enterPassword(String password) {
-		entervaluebyXpath(passwordField, "User Email ID ", password);
+		enterValuebyXpath(passwordField, "User Email ID ", password);
 	}
 
 	public void clickSubmitButton() {
@@ -55,5 +55,4 @@ public class LoginPage extends GenericWrappers {
 		clickbyXpath(createAccountLink, " Create Account ");
 
 	}
-
 }

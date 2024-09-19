@@ -179,12 +179,12 @@ public class ProfilePage extends GenericWrappers {
 
 	public void checkProfilePagenavigation() {
 		clickbyXpath(ProfileIcon, "Profileicon");
-		verifyTextContainsByXpath(Profiletitle, "Profile");
+		verifyTextContainsByXpath(Profiletitle, "Profile", "Profile page title");
 	}
 
 	public void checkEditProfilenavigation() {
 		clickbyXpath(EditProfileBtn, "Editprofile");
-		verifyTextContainsByXpath(EditProfiletitle, "Edit Profile");
+		verifyTextContainsByXpath(EditProfiletitle, "Edit Profile", "Edit profile page title");
 
 	}
 
@@ -200,69 +200,69 @@ public class ProfilePage extends GenericWrappers {
 
 	public void compareEmail(String email) {
 
-		verifyTextContainsByXpath(emaildata, email);
+		verifyTextContainsByXpath(emaildata, email, "Pre-entered Email ");
 	}
 
 	public void compareDOBplaceholder(String text) {
 
-		verifyTextContainsByXpath(DOBdata, text);// DOBplaceholder
+		verifyTextContainsByXpath(DOBdata, text, " DOB placeholder");// DOBplaceholder
 	}
 
 	public void compareMobilenumberplaceholder(String text) {
 
-		verifyTextContainsByXpath(Mobilenumberdata, text);// Mobilenumberplacceholder
+		verifyTextContainsByXpath(Mobilenumberdata, text, " Mobile number placeholder");// Mobilenumberplacceholder
 	}
 
 	public void compareRegionplaceholder(String text) {
 
-		verifyTextContainsByXpath(Regiondata, text);// Regionplaceholder
+		verifyTextContainsByXpath(Regiondata, text, " Region placeholder");// Regionplaceholder
 	}
 
 	public void clicksLogoutProfilepage() {
 
-		verifyTextContainsByXpath(Logoutlink, "Log Out");
+		verifyTextContainsByXpath(Logoutlink, "Log Out", "Logout link");
 		scrollToElementAndClick(Logoutlink);
 	}
 
 	public void clickEditPasswordProfilepage() {
 
-		verifyTextContainsByXpath(Editpasswordlink, "Edit Password");
+		verifyTextContainsByXpath(Editpasswordlink, "Edit Password", "Edit password link");
 		scrollToElementAndClick(Editpasswordlink);
 	}
 
 	public void checkDOBerrmessage1() {
 
-		verifyTextContainsByXpath(scrollToElement(DOBerrmsg), DOBerr);
+		verifyTextContainsByXpath(scrollToElement(DOBerrmsg), DOBerr, "Error message ");
 	}
 
 	public void checkMobilenoErrmsg1() {
 
-		verifyTextContainsByXpath(scrollToElement(mobilenoerrmsg), mobilenoErr1);
+		verifyTextContainsByXpath(scrollToElement(mobilenoerrmsg), mobilenoErr1, "Error message ");
 	}
 
 	public void checkMobilenoErrmsg2() {
 
-		verifyTextContainsByXpath(scrollToElement(mobilenoerrmsg), mobilenoErr2);
+		verifyTextContainsByXpath(scrollToElement(mobilenoerrmsg), mobilenoErr2, "Error message ");
 	}
 
 	public void checkRegionerrmsg1() {
 
-		verifyTextContainsByXpath(scrollToElement(Regionerrmsg), regionerr1);
+		verifyTextContainsByXpath(scrollToElement(Regionerrmsg), regionerr1, "Error message ");
 	}
 
 	public void checkRegionerrmsg2() {
 
-		verifyTextContainsByXpath(scrollToElement(Regionerrmsg), regionErr2);
+		verifyTextContainsByXpath(scrollToElement(Regionerrmsg), regionErr2, "Error message ");
 	}
 
 	public void checkNameerrmsg1() {
 
-		verifyTextContainsByXpath(scrollToElement(nameErrmsg), nameErr1);
+		verifyTextContainsByXpath(scrollToElement(nameErrmsg), nameErr1, "Error message ");
 	}
 
 	public void checkNameerrmsg2() {
 
-		verifyTextContainsByXpath(scrollToElement(nameErrmsg), nameErr2);
+		verifyTextContainsByXpath(scrollToElement(nameErrmsg), nameErr2, "Error message ");
 	}
 
 	public void clickEditicon() {
@@ -281,7 +281,7 @@ public class ProfilePage extends GenericWrappers {
 		clearfield(nameTextbox);
 		clickSaveEditprofilepage();
 		checkNameerrmsg1();
-		entervaluebyXpath(nameTextbox, "Namefield", specialcharacter);
+		enterValuebyXpath(nameTextbox, "Namefield", specialcharacter);
 		clickSaveEditprofilepage();
 		checkNameerrmsg2();
 	}
@@ -291,7 +291,7 @@ public class ProfilePage extends GenericWrappers {
 		clearfield(mobileNumberTextbox);
 		clickSaveEditprofilepage();
 		checkMobilenoErrmsg1();
-		entervaluebyXpath(mobileNumberTextbox, "MobileNumberfield", specialcharacter);
+		enterValuebyXpath(mobileNumberTextbox, "MobileNumberfield", specialcharacter);
 		clickSaveEditprofilepage();
 		checkMobilenoErrmsg2();
 	}
@@ -301,29 +301,29 @@ public class ProfilePage extends GenericWrappers {
 		clearfield(regionTextbox);
 		clickSaveEditprofilepage();
 		checkRegionerrmsg1();
-		entervaluebyXpath(regionTextbox, "MobileNumberfield", specialcharacter);
+		enterValuebyXpath(regionTextbox, "MobileNumberfield", specialcharacter);
 		clickSaveEditprofilepage();
 		checkRegionerrmsg2();
 	}
 
 	public void sendimage(String sendkeys) {
 
-		entervaluebyXpath(editiconeditprofilepage, "editiconprofilepage", sendkeys);
+		enterValuebyXpath(editiconeditprofilepage, "editiconprofilepage", sendkeys);
 	}
 
 	public void senddate(String sendkeys) {
 
-		entervaluebyXpath(DOBtextbox, "DOBtextbox", sendkeys);
+		enterValuebyXpath(DOBtextbox, "DOBtextbox", sendkeys);
 	}
 
 	public void sendMobilenumber(String sendkeys) {
 
-		entervaluebyXpath(mobileNumberTextbox, "Mobilenumber", sendkeys);
+		enterValuebyXpath(mobileNumberTextbox, "Mobilenumber", sendkeys);
 	}
 
 	public void sendRegion(String sendkeys) {
 
-		entervaluebyXpath(regionTextbox, "Regiontextbox", sendkeys);
+		enterValuebyXpath(regionTextbox, "Regiontextbox", sendkeys);
 	}
 
 	public void clearDOBfield() {
@@ -345,22 +345,22 @@ public class ProfilePage extends GenericWrappers {
 
 	public void entercorrectOTPbox() {
 
-		entervaluebyXpath(OTPbox1, "OTPbox", "1");
-		entervaluebyXpath(OTPbox2, "OTPbox", "2");
-		entervaluebyXpath(OTPbox3, "OTPbox", "3");
-		entervaluebyXpath(OTPbox4, "OTPbox", "4");
-		entervaluebyXpath(OTPbox5, "OTPbox", "5");
-		entervaluebyXpath(OTPbox6, "OTPbox", "6");
+		enterValuebyXpath(OTPbox1, "OTPbox", "1");
+		enterValuebyXpath(OTPbox2, "OTPbox", "2");
+		enterValuebyXpath(OTPbox3, "OTPbox", "3");
+		enterValuebyXpath(OTPbox4, "OTPbox", "4");
+		enterValuebyXpath(OTPbox5, "OTPbox", "5");
+		enterValuebyXpath(OTPbox6, "OTPbox", "6");
 
 	}
 
 	public void enter5OTP() {
 
-		entervaluebyXpath(OTPbox1, "OTPbox", "1");
-		entervaluebyXpath(OTPbox2, "OTPbox", "2");
-		entervaluebyXpath(OTPbox3, "OTPbox", "3");
-		entervaluebyXpath(OTPbox4, "OTPbox", "4");
-		entervaluebyXpath(OTPbox5, "OTPbox", "5");
+		enterValuebyXpath(OTPbox1, "OTPbox", "1");
+		enterValuebyXpath(OTPbox2, "OTPbox", "2");
+		enterValuebyXpath(OTPbox3, "OTPbox", "3");
+		enterValuebyXpath(OTPbox4, "OTPbox", "4");
+		enterValuebyXpath(OTPbox5, "OTPbox", "5");
 
 	}
 
@@ -371,18 +371,18 @@ public class ProfilePage extends GenericWrappers {
 	}
 
 	public void OTPerrtext(String text) {
-		verifyTextContainsByXpath(OTPerrtext, text);
+		verifyTextContainsByXpath(OTPerrtext, text, "Error message ");
 
 	}
 
 	public void enterincorrect6OTP() {
 
-		entervaluebyXpath(OTPbox1, "OTPbox", "1");
-		entervaluebyXpath(OTPbox2, "OTPbox", "2");
-		entervaluebyXpath(OTPbox3, "OTPbox", "3");
-		entervaluebyXpath(OTPbox4, "OTPbox", "4");
-		entervaluebyXpath(OTPbox5, "OTPbox", "p");
-		entervaluebyXpath(OTPbox6, "OTPbox", "6");
+		enterValuebyXpath(OTPbox1, "OTPbox", "1");
+		enterValuebyXpath(OTPbox2, "OTPbox", "2");
+		enterValuebyXpath(OTPbox3, "OTPbox", "3");
+		enterValuebyXpath(OTPbox4, "OTPbox", "4");
+		enterValuebyXpath(OTPbox5, "OTPbox", "p");
+		enterValuebyXpath(OTPbox6, "OTPbox", "6");
 
 	}
 
@@ -393,11 +393,11 @@ public class ProfilePage extends GenericWrappers {
 
 	public void checkOTPverificationpage() {
 
-		verifyTextContainsByXpath(OTPVerificationtext, "OTP Verification");
+		verifyTextContainsByXpath(OTPVerificationtext, "OTP Verification", "OTP verification title");
 	}
 
 	public void checkexplorecourse() {
-		verifyTextContainsByXpath(Explorecourse, "Explore Our Course");
+		verifyTextContainsByXpath(Explorecourse, "Explore Our Course", "Explore course text");
 	}
 
 	public void checkOTPfieldallerrmsg() throws Exception {
@@ -405,12 +405,12 @@ public class ProfilePage extends GenericWrappers {
 		// will click verify and proceed button without entering OTP and check error
 		// toast
 		clickbyXpath(OTPVerifiedandProceedbtn, "verifyandproceedbutton");
-		verifyTextContainsByXpath(OTPerrtext, "Please enter the valid OTP");
+		verifyTextContainsByXpath(OTPerrtext, "Please enter the valid OTP", "Error message ");
 		// will enter only 5 OTP and cick on verify and proceed to check the error
 		// message
 		enter5OTP();
 		clickbyXpath(OTPVerifiedandProceedbtn, "verifyandproceedbutton");
-		verifyTextContainsByXpath(OTPerrtext, "Please enter the valid OTP");
+		verifyTextContainsByXpath(OTPerrtext, "Please enter the valid OTP", "Error message ");
 
 		// going back to profile page and retuning to OTP verification page
 		backnavigation(Profiletitle, "Profile");
@@ -421,12 +421,12 @@ public class ProfilePage extends GenericWrappers {
 		enterincorrect6OTP();
 		clickbyXpath(OTPVerifiedandProceedbtn, "verifyandproceedbutton");
 //		    	particulartoastreaderlong("invalidOTPscreen.png", "invalidOTPscreen.png", "Invalid OTP", "Invalid OTP toast occurred", 1000);
-		verifyTextContainsByXpath(ToastMessage, "Invalid OTP");
+		verifyTextContainsByXpath(ToastMessage, "Invalid OTP", "Toast message ");
 
 		clickonresendbutton();
 //				particulartoastreaderlong("toast.png", "subtoast.png", "OTP has been sent to user registered", "OTP resent to respected EmailAddress",2000);
 
-		verifyTextContainsByXpath(ToastMessage, "OTP has been sent to user registered Email-Id");
+		verifyTextContainsByXpath(ToastMessage, "OTP has been sent to user registered Email-Id", "Toast message ");
 
 	}
 
@@ -439,7 +439,7 @@ public class ProfilePage extends GenericWrappers {
 		entercorrectOTPbox();
 		clickbyXpath(OTPVerifiedandProceedbtn, "verifyandproceedbutton");
 
-		verifyTextContainsByXpath(changePasswordtitle, "Change Password");
+		verifyTextContainsByXpath(changePasswordtitle, "Change Password", "Change Password title");
 	}
 
 //		CHANGE PASSWORD PAGE
@@ -448,43 +448,43 @@ public class ProfilePage extends GenericWrappers {
 
 		// click on reset button without entering data
 		clickbyXpath(resetpasswordBtn, "Reset password button");
-		verifyTextContainsByXpath(Passworderrtxt, passerrmsg1);
-		verifyTextContainsByXpath(CPerrtxt, CPerrmsg1);
+		verifyTextContainsByXpath(Passworderrtxt, passerrmsg1, "Error message ");
+		verifyTextContainsByXpath(CPerrtxt, CPerrmsg1, "Error message ");
 
 		// entering only small letter and check err msg
-		entervaluebyXpath(passwordtextboxPP, "Password Textbox", "smallletters");
+		enterValuebyXpath(passwordtextboxPP, "Password Textbox", "smallletters");
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(Passworderrtxt, passerrmsg2);
+		verifyTextContainsByXpath(Passworderrtxt, passerrmsg2, "Error message ");
 
 		// entering only capital letter and check err msg
 		clearfield(passwordtextboxPP);
-		entervaluebyXpath(passwordtextboxPP, "Password Textbox", "CAPITALLETTERS");
+		enterValuebyXpath(passwordtextboxPP, "Password Textbox", "CAPITALLETTERS");
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(Passworderrtxt, passerrmsg3);
+		verifyTextContainsByXpath(Passworderrtxt, passerrmsg3, "Error message ");
 
 		// entering both small and capital letter and check err msg
 		clearfield(passwordtextboxPP);
-		entervaluebyXpath(passwordtextboxPP, "Password Textbox", "smallCAPS");
+		enterValuebyXpath(passwordtextboxPP, "Password Textbox", "smallCAPS");
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(Passworderrtxt, passerrmsg4);
+		verifyTextContainsByXpath(Passworderrtxt, passerrmsg4, "Error message ");
 
 		// entering small,caps and number nd check err msg
 		clearfield(passwordtextboxPP);
-		entervaluebyXpath(passwordtextboxPP, "Password Textbox", "smallCAPS123");
+		enterValuebyXpath(passwordtextboxPP, "Password Textbox", "smallCAPS123");
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(Passworderrtxt, passerrmsg5);
+		verifyTextContainsByXpath(Passworderrtxt, passerrmsg5, "Error message ");
 
 		// entering only password field and check CPerr msg
 		clearfield(passwordtextboxPP);
-		entervaluebyXpath(passwordtextboxPP, "Password Textbox", PasswordData);
+		enterValuebyXpath(passwordtextboxPP, "Password Textbox", PasswordData);
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(CPerrtxt, CPerrmsg1);
+		verifyTextContainsByXpath(CPerrtxt, CPerrmsg1, "Error message ");
 
 		// enter wrong password in CPfield compare to password field nd check err msg
 		clearfield(confirmpPasswordtextboxPP);
-		entervaluebyXpath(confirmpPasswordtextboxPP, "ConfirmPassword Textbox", specialcharacter);
+		enterValuebyXpath(confirmpPasswordtextboxPP, "ConfirmPassword Textbox", specialcharacter);
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
-		verifyTextContainsByXpath(CPerrtxt, CPerrmsg2);
+		verifyTextContainsByXpath(CPerrtxt, CPerrmsg2, "Error message ");
 
 	}
 
@@ -492,9 +492,9 @@ public class ProfilePage extends GenericWrappers {
 	public void Resetnewpassword() {
 
 		clearfield(passwordtextboxPP);
-		entervaluebyXpath(passwordtextboxPP, "PasswordTextbox", PasswordData);
+		enterValuebyXpath(passwordtextboxPP, "PasswordTextbox", PasswordData);
 		clearfield(confirmpPasswordtextboxPP);
-		entervaluebyXpath(confirmpPasswordtextboxPP, "ConfirmPassword Textbox", PasswordData);
+		enterValuebyXpath(confirmpPasswordtextboxPP, "ConfirmPassword Textbox", PasswordData);
 		clickbyXpath(resetpasswordBtn, "Reset password button ");
 		try {
 			checktoast("Password has been updated successfully");
@@ -502,12 +502,12 @@ public class ProfilePage extends GenericWrappers {
 			e.printStackTrace();
 		}
 
-		verifyTextContainsByXpath(Profiletitle, "Profile");
+		verifyTextContainsByXpath(Profiletitle, "Profile", "Profile title ");
 	}
 
 	public void checktoast(String toast) {
 
-		verifyTextContainsByXpath(ToastMessage, toast);
+		verifyTextContainsByXpath(ToastMessage, toast, "Toast message ");
 	}
 
 	public void clearandsavefield() {

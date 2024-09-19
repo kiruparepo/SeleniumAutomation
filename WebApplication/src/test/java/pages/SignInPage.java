@@ -159,17 +159,17 @@ public class SignInPage extends WebApplicationWrappers {
 
 		// check error message without entering data
 		clickbyXpath(Submit, "submit button");
-		verifyTextContainsByXpath(emailerrtxt0, "Email is a required field");
+		verifyTextContainsByXpath(emailerrtxt0, "Email is a required field","Error message ");
 
 		// check error message entering only space
-		entervaluebyXpath(Emailtxtbox, "To enter only space on Emailfield", "  ");
+		enterValuebyXpath(Emailtxtbox, "To enter only space on Emailfield", "  ");
 		clickbyXpath(Submit, "submit button");
-		verifyTextContainsByXpath(emailerrtxt1, "Email cannot be empty");
+		verifyTextContainsByXpath(emailerrtxt1, "Email cannot be empty","Error message ");
 
 		// check error message entering only characters
-		entervaluebyXpath(Emailtxtbox, "To enter only characters  on Emailfield", "abcd");
+		enterValuebyXpath(Emailtxtbox, "To enter only characters  on Emailfield", "abcd");
 		clickbyXpath(Submit, "submit button");
-		verifyTextContainsByXpath(emailerrtxt2, "Invalid email");
+		verifyTextContainsByXpath(emailerrtxt2, "Invalid email","Error message ");
 
 	}
 
@@ -179,39 +179,39 @@ public class SignInPage extends WebApplicationWrappers {
 		attributevalue(Passwordtxtbox, "placeholder", "Enter your password");
 
 		clickbyXpath(Submit, "submit button");
-		verifyTextContainsByXpath(passworderrtxt0, "Password is a required field");
+		verifyTextContainsByXpath(passworderrtxt0, "Password is a required field","Error message ");
 
 		// check password error message
-		entervaluebyXpath(Passwordtxtbox, "To enter space on passwordfield", "  ");
+		enterValuebyXpath(Passwordtxtbox, "To enter space on passwordfield", "  ");
 		clickbyXpath(Submit, "submit button");
-		verifyTextContainsByXpath(passworderrtxt1, "Password cannot be empty");
+		verifyTextContainsByXpath(passworderrtxt1, "Password cannot be empty","Error message ");
 
 	}
 
 	public void checkunregisteredemail() {
 
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Emailtxtbox, "To enter unregisteredemail on Emailfield", randomnames(3) + "@gmail.com");
+		enterValuebyXpath(Emailtxtbox, "To enter unregisteredemail on Emailfield", randomnames(3) + "@gmail.com");
 
 		clearfield(Passwordtxtbox);
-		entervaluebyXpath(Passwordtxtbox, "To enter password ", randomnames(6));
+		enterValuebyXpath(Passwordtxtbox, "To enter password ", randomnames(6));
 		clickbyXpath(Submit, "submit button");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		verifyTextContainsByXpath(ToastMessage, "EmailId not exist");
+		verifyTextContainsByXpath(ToastMessage, "EmailId not exist","Toast message ");
 
 	}
 
 	public void checkvalidemailandpasswordfield() {
 
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Emailtxtbox, "To enter email on Emailfield", email);
+		enterValuebyXpath(Emailtxtbox, "To enter email on Emailfield", email);
 
 		clearfield(Passwordtxtbox);
-		entervaluebyXpath(Passwordtxtbox, "To enter password ", password);
+		enterValuebyXpath(Passwordtxtbox, "To enter password ", password);
 		clickbyXpath(Submit, "submit button");
 
 		try {
@@ -220,13 +220,13 @@ public class SignInPage extends WebApplicationWrappers {
 			e.printStackTrace();
 		}
 
-		verifyTextContainsByXpath(ToastMessage, "login successful");
+		verifyTextContainsByXpath(ToastMessage, "login successful","Toast message ");
 
 	}
 
 	public void checkToast(String toast) {
 
-		verifyTextContainsByXpath(ToastMessage, toast);
+		verifyTextContainsByXpath(ToastMessage, toast,"Toast message ");
 	}
 
 	String Forgetpasswordemailerrtxt0 = "Email is a required field";
@@ -241,31 +241,31 @@ public class SignInPage extends WebApplicationWrappers {
 
 		// click on Forgetpassword and check page navigation
 		clickbyXpath(forgetpasswordbtn, "Forget password field");
-		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password");
+		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password","Forget password title ");
 
 		// check emailtextbox placeholder name
-		verifyTextContainsByXpath(Forgetpassemailfield, "Enter your user email");
+		verifyTextContainsByXpath(Forgetpassemailfield, "Enter your user email","Forget password email");
 
 		// verify error message of forget password page
 		clickbyXpath(generateOTP, "Generate OTP button ");
-		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt0);
+		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt0,"Forget password email field");
 
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", "  ");
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", "  ");
 		clickbyXpath(generateOTP, "Generate OTP button ");
-		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt1);
+		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt1,"Forget password error message");
 
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", randomnames(4));
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", randomnames(4));
 		clickbyXpath(generateOTP, "Generate OTP button ");
-		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt2);
+		verifyTextContainsByXpath(Forgetpassemailerrtxt, Forgetpasswordemailerrtxt2,"Forget password error message");
 
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", randomnames(4) + "@yopmail.com");
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", randomnames(4) + "@yopmail.com");
 		clickbyXpath(generateOTP, "Generate OTP button ");
 		checkToast("EmailId not exist");
 
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", email);
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", email);
 		clickbyXpath(generateOTP, "Generate OTP button ");
 		checkToast("OTP has been sent to user registered Email-Id");
 //		  
@@ -280,19 +280,19 @@ public class SignInPage extends WebApplicationWrappers {
 
 		// click on Forgetpassword and check page navigation
 		clickbyXpath(forgetpasswordbtn, "Forget password field");
-		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password");
+		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password","Forget password title");
 
 		// entering valid mailID and navigate from Forget password page to OTP
 		// verification page
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", email);
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", email);
 		clickbyXpath(generateOTP, "Generate OTP button ");
 		Thread.sleep(3000);
 		checkToast("OTP has been sent to user registered Email-Id");
 
 		// check title of OTP verification page
-		verifyTextContainsByXpath(OTPverificationttile, "OTP Verification");
-		verifyTextContainsByXpath(OTPtimer, "Resend Code");
+		verifyTextContainsByXpath(OTPverificationttile, "OTP Verification","OTP verification title");
+		verifyTextContainsByXpath(OTPtimer, "Resend Code","Resend code");
 
 		// check OTPpage error message
 		OTPbox1.sendKeys("1");
@@ -303,7 +303,7 @@ public class SignInPage extends WebApplicationWrappers {
 		clickbyXpath(verifiedandproceed, "verified and proceed button");
 		Thread.sleep(3000);
 
-		verifyTextContainsByXpath(OTPpageErrtxt, "Please enter the valid OTP");
+		verifyTextContainsByXpath(OTPpageErrtxt, "Please enter the valid OTP","OTP page error text");
 
 		// check OTP page error toast
 		OTPbox1.sendKeys("1");
@@ -314,26 +314,26 @@ public class SignInPage extends WebApplicationWrappers {
 		OTPbox6.sendKeys("1");
 		clickbyXpath(verifiedandproceed, "verified and proceed button");
 		Thread.sleep(3000);
-		verifyTextContainsByXpath(ToastMessage, "Invalid OTP");
+		verifyTextContainsByXpath(ToastMessage, "Invalid OTP","Toast message");
 
 		Thread.sleep(3000);
 
 		// check OTP page toast
 		clickbyXpathlongwait(resendOtp, "Resend OTP button ");
 		Thread.sleep(3000);
-		verifyTextContainsByXpath(ToastMessage, "OTP has been sent to user registered Email-Id");
+		verifyTextContainsByXpath(ToastMessage, "OTP has been sent to user registered Email-Id","Toast message");
 
 		// check OTP page navigation to Password page
 		backnavigation(forgetpasswordTile, "Forget Password");
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", email);
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", email);
 		clickbyXpath(generateOTP, "Generate OTP button ");
 		Thread.sleep(3000);
 		checkToast("OTP has been sent to user registered Email-Id");
 
 		// check title of OTP verification page
-		verifyTextContainsByXpath(OTPverificationttile, "OTP Verification");
-		verifyTextContainsByXpath(OTPtimer, "Resend Code");
+		verifyTextContainsByXpath(OTPverificationttile, "OTP Verification","OTP verifiction title");
+		verifyTextContainsByXpath(OTPtimer, "Resend Code","Resend code");
 		Thread.sleep(3000);
 
 		OTPbox1.sendKeys("1");
@@ -348,7 +348,7 @@ public class SignInPage extends WebApplicationWrappers {
 		checkToast("OTP has been sent to user registered Email-Id");
 
 		// check Change password page navigation
-		verifyTextContainsByXpath(ChangePasswordtitle, "Change Password");
+		verifyTextContainsByXpath(ChangePasswordtitle, "Change Password","Change password title ");
 
 	}
 
@@ -360,12 +360,12 @@ public class SignInPage extends WebApplicationWrappers {
 
 		// click on Forgetpassword and check page navigation
 		clickbyXpath(forgetpasswordbtn, "Forget password field");
-		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password");
+		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password","Forget password title ");
 
 		// entering valid mailID and navigate from Forget password page to OTP
 		// verification page
 		clearfield(Emailtxtbox);
-		entervaluebyXpath(Forgetpassemailfield, "Forget password email field", email);
+		enterValuebyXpath(Forgetpassemailfield, "Forget password email field", email);
 		clickbyXpath(generateOTP, "Generate OTP button ");
 		Thread.sleep(3000);
 		checkToast("OTP has been sent to user registered Email-Id");
@@ -381,43 +381,43 @@ public class SignInPage extends WebApplicationWrappers {
 
 		// click on reset button without entering data
 		clickbyXpath(Resetmypassword_CPP, "Reset password button");
-		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg1);
-		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg1);
+		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg1,"Error message ");
+		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg1,"Error message ");
 
 		// entering only small letter and check err msg
-		entervaluebyXpath(Passwordtxtbox, "Password Textbox", "smallletters");
+		enterValuebyXpath(Passwordtxtbox, "Password Textbox", "smallletters");
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg2);
+		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg2,"Error message ");
 
 		// entering only capital letter and check err msg
 		clearfield(Passwordfield_CPP);
-		entervaluebyXpath(Passwordfield_CPP, "Password Textbox", "CAPITALLETTERS");
+		enterValuebyXpath(Passwordfield_CPP, "Password Textbox", "CAPITALLETTERS");
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg3);
+		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg3,"Error message ");
 
 		// entering both small and capital letter and check err msg
 		clearfield(Passwordfield_CPP);
-		entervaluebyXpath(Passwordfield_CPP, "Password Textbox", "smallCAPS");
+		enterValuebyXpath(Passwordfield_CPP, "Password Textbox", "smallCAPS");
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg4);
+		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg4,"Error message ");
 
 		// entering small,caps and number nd check err msg
 		clearfield(Passwordfield_CPP);
-		entervaluebyXpath(Passwordfield_CPP, "Password Textbox", "smallCAPS123");
+		enterValuebyXpath(Passwordfield_CPP, "Password Textbox", "smallCAPS123");
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg5);
+		verifyTextContainsByXpath(passworderrtxt_CPP, passerrmsg5,"Error message ");
 
 		// entering only password field and check CPerr msg
 		clearfield(Passwordfield_CPP);
-		entervaluebyXpath(Passwordfield_CPP, "Password Textbox", PasswordData);
+		enterValuebyXpath(Passwordfield_CPP, "Password Textbox", PasswordData);
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg1);
+		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg1,"Error message ");
 
 		// enter wrong password in CPfield compare to password field nd check err msg
 		clearfield(confirmpasswordfield_CPP);
-		entervaluebyXpath(confirmpasswordfield_CPP, "ConfirmPassword Textbox", "@#$%");
+		enterValuebyXpath(confirmpasswordfield_CPP, "ConfirmPassword Textbox", "@#$%");
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
-		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg2);
+		verifyTextContainsByXpath(confirmPasserrtxt_CPP, CPerrmsg2,"Error message ");
 
 	}
 
@@ -425,18 +425,18 @@ public class SignInPage extends WebApplicationWrappers {
 	public void Resetnewpassword() {
 
 		clearfield(Passwordfield_CPP);
-		entervaluebyXpath(Passwordfield_CPP, "PasswordTextbox", PasswordData);
+		enterValuebyXpath(Passwordfield_CPP, "PasswordTextbox", PasswordData);
 		clearfield(confirmpasswordfield_CPP);
-		entervaluebyXpath(confirmpasswordfield_CPP, "ConfirmPassword Textbox", PasswordData);
+		enterValuebyXpath(confirmpasswordfield_CPP, "ConfirmPassword Textbox", PasswordData);
 		clickbyXpath(Resetmypassword_CPP, "Reset password button ");
 		try {
 			Thread.sleep(3000);
-			verifyTextContainsByXpath(ToastMessage, "Password has been updated successfully");
+			verifyTextContainsByXpath(ToastMessage, "Password has been updated successfully","Toast message ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		verifyTextContainsByXpath(Signintitle, "Sign in");
+		verifyTextContainsByXpath(Signintitle, "Sign in","SignIn title");
 	}
 
 }

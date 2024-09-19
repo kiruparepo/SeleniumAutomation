@@ -69,7 +69,7 @@ public class AllCoursePage extends WebApplicationWrappers{
 	  
 	  public void verifySelectsubjecttext() {
 
-		  verifyTextContainsByXpath(Selectsubject, "Select Subject");
+		  verifyTextContainsByXpath(Selectsubject, "Select Subject" , "Select Subject text ");
 	}
 	    
 	    

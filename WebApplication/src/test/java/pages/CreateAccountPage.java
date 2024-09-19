@@ -158,21 +158,21 @@ public class CreateAccountPage extends GenericWrappers {
 	    // Methods to interact with elements
 	    
 		public void enterEmailId(String emailId) {
-			entervaluebyXpath(emailField, " Email ID ", emailId);
+			enterValuebyXpath(emailField, " Email ID ", emailId);
 		}
 
 		
 		public void enterUserName(String userName) {
-			entervaluebyXpath(usernameField, " User Name ", userName);
+			enterValuebyXpath(usernameField, " User Name ", userName);
 		}
 
 		public void enterPassword(String password) {
-			entervaluebyXpath(passwordField, " Password ", password);
+			enterValuebyXpath(passwordField, " Password ", password);
 		}
 
 		
 		public void enterConfirmPassword(String confirmPassword) {
-			entervaluebyXpath(confirmPasswordField, "Confirm Password", confirmPassword);
+			enterValuebyXpath(confirmPasswordField, "Confirm Password", confirmPassword);
 		}
 
 		
@@ -196,93 +196,93 @@ public class CreateAccountPage extends GenericWrappers {
 		}
 		
 		public void checkacnttxt() throws Exception {
-			verifyTextContainsByXpath(CreateAccount,"Create Account");
+			verifyTextContainsByXpath(CreateAccount,"Create Account","Create account title");
 			
 		}
 		
 		public void checknametxt() throws Exception {
-			verifyTextContainsByXpath(nameTxt,"Name");
+			verifyTextContainsByXpath(nameTxt,"Name","Name header");
 		}
 		
 		public void checkemailtxt() throws Exception {
-			verifyTextContainsByXpath(emailTxt,"Email");
+			verifyTextContainsByXpath(emailTxt,"Email","email header");
 		}
 			
 		public void checkpasswordtxt() throws Exception {
-			verifyTextContainsByXpath(passwordtxt, "Password");
+			verifyTextContainsByXpath(passwordtxt, "Password","Password header");
 		}
 
 		public void checkconfirmpasswordtxt() throws Exception {
-			verifyTextContainsByXpath(confirmPasswordtxt, "Confirm Password");
+			verifyTextContainsByXpath(confirmPasswordtxt, "Confirm Password","Confirm password header");
 
 		}
 
 		public void checkTCtext() throws Exception {
-			verifyTextContainsByXpath(TClinktxt, "Terms and Conditions");
+			verifyTextContainsByXpath(TClinktxt, "Terms and Conditions","terms and Conditions header");
 
 		}
 
 		public void checkEmailErrMsg0() throws Exception {
-			verifyTextContainsByXpath(emailErr, emailErr0);
+			verifyTextContainsByXpath(emailErr, emailErr0,"Error message");
 
 		}
 
 		public void checkEmailErrMsg1() throws Exception {
-			verifyTextContainsByXpath(emailErr, emailErr1);
+			verifyTextContainsByXpath(emailErr, emailErr1,"Error message");
 
 		}
 
 		public void checkNameErrMsg0() throws Exception {
-			verifyTextContainsByXpath(nameErr, nameErr0);
+			verifyTextContainsByXpath(nameErr, nameErr0,"Error message");
 
 		}
 
 		public void checkNameErrMsg1() throws Exception {
-			verifyTextContainsByXpath(nameErr, nameErr1);
+			verifyTextContainsByXpath(nameErr, nameErr1,"Error message");
 		}
 
 		public void checkNameErrMsg2() throws Exception {
-			verifyTextContainsByXpath(nameErr, nameErr2);
+			verifyTextContainsByXpath(nameErr, nameErr2,"Error message");
 
 		}
 
 		public void checkPasswordErrMsg0() throws Exception {
-			verifyTextContainsByXpath(passwordErr, passErr0);
+			verifyTextContainsByXpath(passwordErr, passErr0,"Error message");
 
 		}
 
 		public void checkPasswordErrMsg1() throws Exception {
-			verifyTextContainsByXpath(passwordErr, passErr1);
+			verifyTextContainsByXpath(passwordErr, passErr1,"Error message");
 
 		}
 
 		public void checkPasswordErrMsg2() throws Exception {
-			verifyTextContainsByXpath(passwordErr, passErr2);
+			verifyTextContainsByXpath(passwordErr, passErr2,"Error message");
 
 		}
 
 		public void checkPasswordErrMsg3() throws Exception {
-			verifyTextContainsByXpath(passwordErr, passErr3);
+			verifyTextContainsByXpath(passwordErr, passErr3,"Error message");
 
 		}
 
 		public void checkPasswordErrMsg4() throws Exception {
-			verifyTextContainsByXpath(passwordErr, passErr4);
+			verifyTextContainsByXpath(passwordErr, passErr4,"Error message");
 
 		}
 
 		public void checkConfirmPasswordErrMsg0() throws Exception {
-			verifyTextContainsByXpath(confirmpassErr, cPasserr0);
+			verifyTextContainsByXpath(confirmpassErr, cPasserr0,"Error message");
 
 		}
 
 		public void checkConfirmPasswordErrMsg1() throws Exception {
-			verifyTextContainsByXpath(confirmpassErr, cPasserr1);
+			verifyTextContainsByXpath(confirmpassErr, cPasserr1,"Error message");
 
 		}
 
 		public void checkTCerrmsg() throws Exception {
-			verifyTextContainsByXpath(Tcerr, tcErr);
+			verifyTextContainsByXpath(Tcerr, tcErr,"Error message");
 
 		}
 
@@ -330,32 +330,32 @@ public class CreateAccountPage extends GenericWrappers {
 
 		public void nointernetpage() {
 
-			verifyTextContainsByXpath(nointernetpage, "Try Again");
+			verifyTextContainsByXpath(nointernetpage, "Try Again","No internet error message");
 		}
 
 		public void checkOTPverificationpage() {
-			verifyTextContainsByXpath(OTPVerificationtext, "OTP Verification");
+			verifyTextContainsByXpath(OTPVerificationtext, "OTP Verification","OTP verfication page");
 
 		}
 
 		public void entercorrectOTPbox() {
 
-			entervaluebyXpath(OTPbox1, "OTPbox", "1");
-			entervaluebyXpath(OTPbox2, "OTPbox", "2");
-			entervaluebyXpath(OTPbox3, "OTPbox", "3");
-			entervaluebyXpath(OTPbox4, "OTPbox", "4");
-			entervaluebyXpath(OTPbox5, "OTPbox", "5");
-			entervaluebyXpath(OTPbox6, "OTPbox", "6");
+			enterValuebyXpath(OTPbox1, "OTPbox", "1");
+			enterValuebyXpath(OTPbox2, "OTPbox", "2");
+			enterValuebyXpath(OTPbox3, "OTPbox", "3");
+			enterValuebyXpath(OTPbox4, "OTPbox", "4");
+			enterValuebyXpath(OTPbox5, "OTPbox", "5");
+			enterValuebyXpath(OTPbox6, "OTPbox", "6");
 
 		}
 
 		public void enter5OTP() {
 
-			entervaluebyXpath(OTPbox1, "OTPbox", "1");
-			entervaluebyXpath(OTPbox2, "OTPbox", "2");
-			entervaluebyXpath(OTPbox3, "OTPbox", "3");
-			entervaluebyXpath(OTPbox4, "OTPbox", "4");
-			entervaluebyXpath(OTPbox5, "OTPbox", "5");
+			enterValuebyXpath(OTPbox1, "OTPbox", "1");
+			enterValuebyXpath(OTPbox2, "OTPbox", "2");
+			enterValuebyXpath(OTPbox3, "OTPbox", "3");
+			enterValuebyXpath(OTPbox4, "OTPbox", "4");
+			enterValuebyXpath(OTPbox5, "OTPbox", "5");
 
 		}
 
@@ -366,18 +366,18 @@ public class CreateAccountPage extends GenericWrappers {
 		}
 
 		public void OTPerrtext(String text) {
-			verifyTextContainsByXpath(OTPerrtext, text);
+			verifyTextContainsByXpath(OTPerrtext, text,"OTP error message");
 
 		}
 
 		public void enterincorrect6OTP() {
 
-			entervaluebyXpath(OTPbox1, "OTPbox", "1");
-			entervaluebyXpath(OTPbox2, "OTPbox", "2");
-			entervaluebyXpath(OTPbox3, "OTPbox", "3");
-			entervaluebyXpath(OTPbox4, "OTPbox", "4");
-			entervaluebyXpath(OTPbox5, "OTPbox", "0");
-			entervaluebyXpath(OTPbox6, "OTPbox", "6");
+			enterValuebyXpath(OTPbox1, "OTPbox", "1");
+			enterValuebyXpath(OTPbox2, "OTPbox", "2");
+			enterValuebyXpath(OTPbox3, "OTPbox", "3");
+			enterValuebyXpath(OTPbox4, "OTPbox", "4");
+			enterValuebyXpath(OTPbox5, "OTPbox", "0");
+			enterValuebyXpath(OTPbox6, "OTPbox", "6");
 
 		}
 
@@ -424,7 +424,7 @@ public class CreateAccountPage extends GenericWrappers {
 
 		public void checkToast(String toast) {
 
-			verifyTextContainsByXpath(ToastMessage, toast);
+			verifyTextContainsByXpath(ToastMessage, toast,"Toast");
 		}
 
 		public void backtocreateacnt() {
