@@ -3,7 +3,6 @@ package wrappers;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
@@ -35,7 +34,7 @@ public class WebApplicationWrappers extends GenericWrappers {
 	@BeforeMethod 
 	public void beforeMethod(){ 
 	Reporter.startTestCase();
-	//initDriver(); 
+//	initDriver(); 
 	
 	}
 

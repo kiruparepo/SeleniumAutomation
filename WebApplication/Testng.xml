@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "file:///C:/Users/Invcuser_45/Desktop/Ashif/Automation_Ashif/testng-1.0.dtd">
+<suite name="Suite" thread-count="5">
+
+	
+ <test thread-count="5" name="Test">
+	  
+    <classes>
+		 
+		 
+      <class name="allCourseModule.TC_01_AllcoursePage"/>
+      
+      <class name="cartPageModule.TC_01_cartPage"/>
+      
+      <class name="createAccountModule.TC01_CreateAccount"/>
+      <class name="createAccountModule.TC_02_CreateAccount"/>
+      <class name="createAccountModule.TC_03_CreateAccount"/>
+      <class name="createAccountModule.TC_04_CreateAccount"/>
+      <class name="createAccountModule.TC_05_CreateAccount"/>
+      <class name="createAccountModule.TC_06_CreateAccount"/>
+      <class name="createAccountModule.TC_07_CreateAccount"/>
+      <class name="createAccountModule.TC_08_CreateAccount"/>
+      <class name="createAccountModule.TC_09_CreateAccount"/>
+      <class name="createAccountModule.TC_10_CreateAccount"/>
+      
+      
+      <class name="landingPageModule.TC_01_LandingPage"/>
+      <class name="landingPageModule.TC_02_LandingPage"/>
+      
+      
+      <class name="myCoursePageModule.TC_01_MyCoursePage"/>
+      
+       <class name="profilePageModule.TC_01_ProfilePage"/>
+       <class name="profilePageModule.TC_02_ProfilePage"/>
+       <class name="profilePageModule.TC_03_ProfilePage"/>
+       <class name="profilePageModule.TC_04_ProfilePage"/>
+       <class name="profilePageModule.TC_05_ProfilePage"/>
+       
+       
+       <class name="signInPageModule.TC_01_SignInpage"/>
+       <class name="signInPageModule.TC_02_SignInpage"/>
+       <class name="signInPageModule.TC_03_SignInpage"/>
+       <class name="signInPageModule.TC_04_SignInpage"/>
+      
+      
+     
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
+
