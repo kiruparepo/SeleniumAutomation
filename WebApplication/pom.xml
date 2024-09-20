@@ -3,7 +3,8 @@
   <groupId>com</groupId>
   <artifactId>WebApplication</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
+
+	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
@@ -13,12 +14,17 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.github.stephenc.monte</groupId>
+			<artifactId>monte-screen-recorder</artifactId>
+			<version>0.7.7.0</version>
+		</dependency>
+
+		
+		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.7.0</version>
 		</dependency>
-
-		
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
@@ -38,19 +44,30 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>4.22.0</version>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>4.13.0</version>
 		</dependency>
 
+</dependencies>
+	
+	
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
 
-		<dependency>
-			<groupId>io.appium</groupId>
-			<artifactId>java-client</artifactId>
-			<version>8.5.1</version>
-		</dependency>
-	</dependencies>
+
+	
 </project>

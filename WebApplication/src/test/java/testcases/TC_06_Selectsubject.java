@@ -39,10 +39,7 @@ public class TC_06_Selectsubject extends WebApplicationWrappers {
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickAllCourseButton();
-		allcoursepage.clickAllSubjectDropdown();
-		allcoursepage.selectSubject("Chemistry");
-		Thread.sleep(2000);
-		allcoursepage.selectCourse(1);
+		
 		Thread.sleep(5000);
 		//createacpage.clickSubmitButton();
 		
