@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.Reporter;
 import wrappers.GenericWrappers;
 
 public class CourseContentPage extends GenericWrappers{
@@ -45,6 +46,11 @@ public class CourseContentPage extends GenericWrappers{
     
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_chapter_Name_Text')])[1]")
 	private WebElement chapterField;
+	
+	@FindBy(xpath = "//div[contains(@class,'Course_Content_course_Title')]/div")
+	private WebElement courseTitle;
+	
+	
 	
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_chapter_Name_Text')])[1]")
 	private WebElement secondChapterField;
@@ -171,7 +177,17 @@ public class CourseContentPage extends GenericWrappers{
     	clickbyXpath(topicTitle(topicnum), " Chapter Field " );
     }
     
+    public void verifyCourseContentPage() {
+    	if(courseTitle.isDisplayed())
+    	{
+    		Reporter.reportStep("User is in Course Content Page and Title: "+courseTitle.getText(), "PASS");
+    	}
+    	else {
+    		Reporter.reportStep("User is not in Course Content Page and Title: "+courseTitle.getText(), "FAIL");
+    	}
+    }
     
+  
     
 }
 

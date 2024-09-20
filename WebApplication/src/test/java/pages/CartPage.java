@@ -2,22 +2,16 @@ package pages;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.python.antlr.PythonParser.list_for_return;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
@@ -107,9 +101,6 @@ public class CartPage extends WebApplicationWrappers{
 			e.printStackTrace();
 		}
 
-		//		WebElement courseContainer = driver.findElement(By.xpath("//div[contains(@class,'All_Courses_course_Container__XYjdI')]"));
-
-		// JavaScript executor to handle scrolling
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		// Get all the course elements inside the container
@@ -133,32 +124,16 @@ public class CartPage extends WebApplicationWrappers{
 
 				addedCourses.add(courseName);
 
-				// Click on the 'Explore' button inside the course container
 				WebElement exploreButton = course.findElement(By.xpath(".//div[contains(@class,'All_Courses_exploreButton_View__bB3NB')]"));
-
-//								clickbyXpath(exploreButton, "clicking on "+ courseName +"-explore button");
 				exploreButton.click();
-
-				// Wait for page to load
 				try {
 					Thread.sleep(3000); // Adjust the wait time based on page load speed
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
-				// After navigation to the course content page, click on the 'Add to Cart' button
-				//				WebElement addToCartButton = driver.findElement(By.xpath("//div[contains(@class,'Course_Content_add_Cart_Button_View__f7mAH')]"));
-//								clickbyXpath(addToCartButton, "clicking on "+ courseName +"-Add to cart Button");
 				addToCartButton.click();
-
-				// Confirmation message (optional)
-				System.out.println("Added course to cart: " + courseName);
-
-				// Navigate back to the main course listing page
 				driver.navigate().back();
-//				backnavigation(Selectsubject, "Select Subject");
 
-				// Wait for the main course page to reload properly
 				try {
 					Thread.sleep(3000); // Adjust the wait time as needed
 				} catch (InterruptedException e) {
@@ -175,7 +150,6 @@ public class CartPage extends WebApplicationWrappers{
 		}
 
 
-		//get count of cart items 
 
 		String cartcount = null;
 		if (cartIconcount.isDisplayed()) {
@@ -186,33 +160,15 @@ public class CartPage extends WebApplicationWrappers{
 			System.out.println("not displyed");
 		}
 		int cartCount= Integer.parseInt(cartcount);
-
-
-		//			     Navigate to the cart page
 		clickbyXpath(cartIcon, "clicking  on Carticon");
-		//		cartIcon.click();
-
-		// Check if the added courses are displayed in the cart
-
-		//            List<WebElement> cartSection = driver.findElements(By.cssSelector("Cart_Screen_cart_Section_1__O8U+u"));
-		//		List<WebElement> cartItems = driver.findElements(By.xpath("//div[contains(@class,'Cart_Screen_cart_Card_View__IZJXC')]"));//Cart_Screen_courseName_Text__CQLJi,Cart_Screen_cart_Card_View__IZJXC
-
 		List<String> cartCourseName = new ArrayList<>();
-
 		for (int i = 0; i < cartItems.size(); i++) {
 			if (i < cartItems.size()) {
-
-
 				// Get the current course element
 				WebElement cart = cartItems.get(i);
-
 				WebElement cartname = cart.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_courseName_Text__CQLJi')]"));
 				String cartCourseNames = cartname.getText();
-				//	                System.out.println("cart names: " +cartCourseNames );
-
 				cartCourseName.add(cartCourseNames);
-
-
 			}  
 			else {
 				System.out.println("cart items has lesser than 1 items ");
@@ -220,10 +176,6 @@ public class CartPage extends WebApplicationWrappers{
 
 		}
 		String string = cartCourseName.toString();
-		System.out.println(string);
-
-
-
 		for (String course : addedCourses) {
 			boolean allCoursesPresent = true;
 			if (!string.contains(course)) {
@@ -251,12 +203,9 @@ public class CartPage extends WebApplicationWrappers{
 	}
 
 
-	//verify course price and subtotal are equal or not 
 	public void verifysubtotalwithcoursepriceandchecktotal() {
 
 		int calculatedTotal=0;
-
-		// Locate cart elements
 		List<WebElement> cartList = driver.findElements(By.xpath("//div[contains(@class,'Cart_Screen_cart_Card_View__IZJXC')]"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -275,11 +224,8 @@ public class CartPage extends WebApplicationWrappers{
 			// Get the price and course name from the cart section
 			WebElement cartprice = cartLists.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_cart_Card_Content_View_2_Price_Text__72Rvo')]"));
 			WebElement coursename = cartLists.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_courseName_Text__CQLJi')]"));
-
-
 			String cartPrice = cartprice.getText();
 			String ele1 = coursename.getText();
-
 			String numericValue = cartPrice.replaceAll("[^0-9]", "");
 			int rightpanel = Integer.parseInt(numericValue);
 
@@ -289,16 +235,11 @@ public class CartPage extends WebApplicationWrappers{
 			// Get the price and course name from the total panel section
 			WebElement Subtotal = Totalpanel.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_cart_Section_2_Course_Price__j0oUV')]"));
 			WebElement cartnameleft = Totalpanel.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_cart_Section_2_Course_Name__wWTSd')]"));
-
 			String subTotal = Subtotal.getText();
 			String ele2 = cartnameleft.getText();
-
-
 			numericValue = subTotal.replaceAll("[^0-9]", "");
 			int leftpanel = Integer.parseInt(numericValue);
-
 			calculatedTotal+=leftpanel;
-
 
 			// Print debugging information
 			System.out.println("Comparing prices for: " + ele1 + " and " + ele2);
@@ -321,16 +262,9 @@ public class CartPage extends WebApplicationWrappers{
 
 		String numericValue =Total.replaceAll("[^0-9]", "");
 		int Totalvalue = Integer.parseInt(numericValue);
-
-
-		// Print the calculated total and the overall total for verification
-		System.out.println("Calculated Total from Subtotals: " + calculatedTotal);
-		System.out.println("Overall Total Displayed: " + Totalvalue);
-
-		// Compare the calculated total with the overall total
 		if (calculatedTotal == Totalvalue) {
 			pass("The calculated total (" + calculatedTotal + ") matches the overall total (" + Totalvalue + ").");
-//			Reporter.reportStep("The calculated total (" + calculatedTotal + ") matches the overall total (" + Totalvalue + ").", "PASS");
+//   	Reporter.reportStep("The calculated total (" + calculatedTotal + ") matches the overall total (" + Totalvalue + ").", "PASS");
 		} else {
 			fail("The calculated total (" + calculatedTotal + ") does not match the overall total (" + Totalvalue + ").");
 //			Reporter.reportStep("The calculated total (" + calculatedTotal + ") does not match the overall total (" + Totalvalue + ").", "Fail");
@@ -343,26 +277,12 @@ public class CartPage extends WebApplicationWrappers{
 
 		jsExecutor.executeScript("window.scrollTo(0, 0);");
         Thread.sleep(2000);
-        
 		scrollToElementAndClick(Buynowbtn);
-//		clickbyXpath(Buynowbtn, "Buy now button ");
 		verifyTextContainsByXpath(PaymentOption, "Payment Option","Payment Option");
 		clickbyXpath(paymentCancelbtn, "Payment cancel button");
 		verifyTextContainsByXpath(cartname, attribute,"Cart Name");
 
 	} 
-
-
-
-
-
-
-
-
-
-
-
-
 
 	public void verifyremovebtn_placeholder_carticon() {
 
@@ -491,30 +411,16 @@ public class CartPage extends WebApplicationWrappers{
 		        WebElement courseName = cartItem.findElement(By.xpath(".//div[contains(@class,'Cart_Screen_courseName_Text__')]"));
 
 		        String before = courseName.getText();
-		        System.out.println("Course Name (Before): " + before);
-
-		        // Scroll to the course name and click
-//		        scrollToElement(courseName); // You may have implemented scrollToElement
-//		        courseName.click();
-
-		        
-		        
-		        
-		        
+        
 		        jsExecutor.executeScript("window.scrollTo(0, 0);");
 		        Thread.sleep(2000);
 				scrollToElementAndClick(courseName);
 		        
-		        
-		        // Wait for navigation and ensure the new page loads
-//		        wait.until(ExpectedConditions.stalenessOf(courseName));
-
 		        // Now find the course title on the new page
 		        WebElement overallCartTitle = driver.findElement(By.xpath("//div[contains(@class,'Course_Content_course_Title_View__')]"));
 		        WebElement courseTitle = overallCartTitle.findElement(By.xpath("//div[contains(@class,'Course_Content_course_Title__')]"));
 
 		        String after = courseTitle.getText();
-		        System.out.println("Course Name (After): " + after);
 
 		        // Compare before and after course names
 		        if (before.equals(after)) {
@@ -523,15 +429,10 @@ public class CartPage extends WebApplicationWrappers{
 		            fail("Clicked on " + before + " in the cart but navigated to " + after + " instead.");
 		        }
 
-		        // Wait a bit before navigating back
 		        Thread.sleep(3000);
-
-		        // Navigate back to the cart page
 		        driver.navigate().back();
-
 		        // Wait for the cart page to reload
-		        Thread.sleep(3000);
-		        
+		        Thread.sleep(3000); 
 		        // Check if navigated back to the cart successfully
 		        WebElement cartPage = driver.findElement(By.xpath("//div[contains(@class,'Cart_Screen_cart_Section_2_Title__')]"));
 		        String text = cartPage.getText();
@@ -549,7 +450,6 @@ public class CartPage extends WebApplicationWrappers{
 		        e.printStackTrace();
 		        return;
 		    }
-
 		    // Refresh the cart list after an item is removed
 		    cartList = driver.findElements(By.xpath("//div[contains(@class,'Cart_Screen_cart_Card_View__')]"));
 		}

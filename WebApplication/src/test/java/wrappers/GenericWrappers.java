@@ -17,7 +17,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -509,10 +508,8 @@ public class GenericWrappers {
 
 			while (scrollCount < maxScrolls) {
 				try {
-//                WebElement element = driver.findElement(locator);
 					if (xpath.isDisplayed()) {
 						jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
-//                    wait.until(ExpectedConditions.elementToBeClickable(xpath));
 						xpath.click();
 						System.out.println("Element found and clicked.");
 						isElementFound = true;
@@ -529,7 +526,6 @@ public class GenericWrappers {
 				scrollCount = 0; // Reset scroll count for scrolling up
 				while (scrollCount < maxScrolls) {
 					try {
-//                    WebElement element = driver.findElement(locator);
 						if (xpath.isDisplayed()) {
 							xpath.click();
 							System.out.println("Element found and clicked.");
@@ -550,15 +546,13 @@ public class GenericWrappers {
 		}
 
 		
-    public void scrollPageDown() {
-        jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
-    }
+		public void scrollPageDown() {
+			jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
+		}
 
-    
-    public void scrollPageUp() {
-        jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
-    }
-    
+		public void scrollPageUp() {
+			jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
+		}
     
 
     

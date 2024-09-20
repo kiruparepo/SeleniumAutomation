@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [WebApplication]" guice-stage="DEVELOPMENT">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
+      <class name="testcase_assessment_module.TC_02_Topic_Level_Assessment">
+=======
 <<<<<<< HEAD
       <class name="profilePageModule.TC_02_ProfilePage">
         <methods>
@@ -18,30 +21,23 @@
       </class> <!-- profilePageModule.TC_02_ProfilePage -->
 =======
       <class name="testcases.TC_04_TakeChapterAssessment">
+>>>>>>> b77cf8861b84ea96ca97a7c9476556d4f1a4e87c
         <methods>
           <include name="beforeMethod"/>
+          <include name="startTestCase"/>
           <include name="createAccount"/>
           <include name="beforeSuite"/>
-          <include name="startTestCase"/>
-          <include name="afterMethod"/>
           <include name="beforeTest"/>
-          <include name="afterTest"/>
-          <include name="afterSuite"/>
-        </methods>
-      </class> <!-- testcases.TC_04_TakeChapterAssessment -->
-      <class name="testcases.TC_02_TakeChapterAssessment">
-        <methods>
-          <include name="startTestCase"/>
-          <include name="beforeMethod"/>
-          <include name="beforeSuite"/>
-          <include name="createAccount"/>
           <include name="afterMethod"/>
-          <include name="beforeTest"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
         </methods>
+<<<<<<< HEAD
+      </class> <!-- testcase_assessment_module.TC_02_Topic_Level_Assessment -->
+=======
       </class> <!-- testcases.TC_02_TakeChapterAssessment -->
 >>>>>>> f29b48463450f957578a6e1e6582b9693b796e45
+>>>>>>> b77cf8861b84ea96ca97a7c9476556d4f1a4e87c
     </classes>
   </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [WebApplication] -->
+</suite> <!-- Failed suite [Default suite] -->

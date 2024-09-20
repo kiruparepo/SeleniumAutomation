@@ -44,7 +44,7 @@ public class TC_03_CompleteVideo extends WebApplicationWrappers {
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
-		mycoursepage.clickGotoCourseButton();
+		mycoursepage.clickGotoCourseButton(1);
 		Thread.sleep(4000);
 		//coursecontentpage.clickChaptertitle("2");
 		coursecontentpage.clickTopictitle("2");

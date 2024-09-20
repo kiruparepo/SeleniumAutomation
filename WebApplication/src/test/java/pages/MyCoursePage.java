@@ -1,9 +1,9 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,9 +23,12 @@ public class MyCoursePage extends WebApplicationWrappers {
 
 	@FindBy(xpath = "//div[text()='Home']//following-sibling::div[1]")
 	private WebElement myCourseButton;
+	
+	public WebElement gotoCourseButton(int coursenum) {
+	    	return driver.findElement(By.xpath("(//div[contains(@class,'My_Courses_myCourse_Button_Text')])["+coursenum+"]"));
+	    }
+	
 
-	@FindBy(xpath = "//div[text()='Go to Course']")
-	private WebElement gotoCourseButton;
 
 	public MyCoursePage(WebDriver driver) {
 		this.driver = driver;
@@ -198,8 +201,8 @@ public class MyCoursePage extends WebApplicationWrappers {
 		clickbyXpath(myCourseButton, " My Course Button ");
 	}
 
-	public void clickGotoCourseButton() {
-		clickbyXpath(gotoCourseButton, " Goto Course Button ");
+	public void clickGotoCourseButton(int courseNo) {
+		clickbyXpath(gotoCourseButton(courseNo), " Goto Course Button ");
 	}
 
 }
