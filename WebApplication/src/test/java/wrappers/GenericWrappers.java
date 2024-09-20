@@ -1,7 +1,5 @@
 package wrappers;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,15 +8,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -519,10 +510,8 @@ public class GenericWrappers {
 
 			while (scrollCount < maxScrolls) {
 				try {
-//                WebElement element = driver.findElement(locator);
 					if (xpath.isDisplayed()) {
 						jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
-//                    wait.until(ExpectedConditions.elementToBeClickable(xpath));
 						xpath.click();
 						System.out.println("Element found and clicked.");
 						isElementFound = true;
@@ -539,7 +528,6 @@ public class GenericWrappers {
 				scrollCount = 0; // Reset scroll count for scrolling up
 				while (scrollCount < maxScrolls) {
 					try {
-//                    WebElement element = driver.findElement(locator);
 						if (xpath.isDisplayed()) {
 							xpath.click();
 							System.out.println("Element found and clicked.");
@@ -560,15 +548,13 @@ public class GenericWrappers {
 		}
 
 		
-    public void scrollPageDown() {
-        jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
-    }
+		public void scrollPageDown() {
+			jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
+		}
 
-    
-    public void scrollPageUp() {
-        jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
-    }
-    
+		public void scrollPageUp() {
+			jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
+		}
     
 
     
