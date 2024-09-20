@@ -48,14 +48,14 @@ public class TC_07_TakeChapterlevelAssessment extends WebApplicationWrappers {
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
-		mycoursepage.clickGotoCourseButton();
+		mycoursepage.clickGotoCourseButton(1);
 		Thread.sleep(1000);
 		coursecontentpage.clickAssessmentButton();
 		assessmentpage.enterFillQuestion("1");
 		assessmentpage.clickSubmitButton();
 		assessmentpage.enterFillQuestion("1");
 		assessmentpage.clickSubmitButton();
-		assessmentpage.clickOverAllSubmitButton();
+		assessmentpage.clickReadytoSubmitButton();
 		assessmentpage.clickPopUpCheckBox();
 		assessmentpage.clickPopUpSubmitButton();
 		Thread.sleep(2000);

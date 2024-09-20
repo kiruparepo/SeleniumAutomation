@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,8 +20,9 @@ public class MyCoursePage extends GenericWrappers {
 	@FindBy(xpath = "//div[text()='Home']//following-sibling::div[1]")
 	private WebElement myCourseButton;
 	
-	@FindBy(xpath = "//div[text()='Go to Course']")
-	private WebElement gotoCourseButton;
+	public WebElement gotoCourseButton(int coursenum) {
+	    	return driver.findElement(By.xpath("(//div[contains(@class,'My_Courses_myCourse_Button_Text')])["+coursenum+"]"));
+	    }
 	
 	
 
@@ -37,8 +39,8 @@ public class MyCoursePage extends GenericWrappers {
 		clickbyXpath(myCourseButton," My Course Button ");
 	}
 	
-	public void clickGotoCourseButton() {
-		clickbyXpath(gotoCourseButton," Goto Course Button ");
+	public void clickGotoCourseButton(int courseNo) {
+		clickbyXpath(gotoCourseButton(courseNo)," Goto Course Button ");
 	}
 
 	

@@ -1,7 +1,5 @@
-package testcases;
+package testcase_assessment_module;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AssessmentPage;
@@ -14,26 +12,25 @@ import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
 
-public class TC_05_CheckAssessmentCompleted extends WebApplicationWrappers {
+public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
 	LoginPage loginpage;
-	LandingPage landingpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
 	CourseContentPage coursecontentpage;
 	MyCoursePage mycoursepage;
 	AssessmentPage assessmentpage;
+	LandingPage landingpage;
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC05 - Check User completed Assessment ";
-		testDescription = " Check User completed Assessment ";
+		testCaseName = " TC01 - Assessment Page navigation check ";
+		testDescription = " Go to Assessment Page and Check all navgation are working fine ";
 	}
 
 
 	@Test
 	public void createAccount() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
-		
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -44,19 +41,25 @@ public class TC_05_CheckAssessmentCompleted extends WebApplicationWrappers {
 		
 		landingpage.clickSignInButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
-		loginpage.enterPassword("Welcome@123");
+		loginpage.enterPassword("Welcome@124");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
 		//coursecontentpage.clickChaptertitle("1");
 		Thread.sleep(2000);
-		
-		coursecontentpage.clickChatpterAssessmentButton();
-		coursecontentpage.clickStartExam();
-	
-		
-		coursecontentpage.checkAssessmentCompletedToast();
-		Thread.sleep(10000);
+		coursecontentpage.clickTopicAssessmentButton();
+		assessmentpage.clickNextButton();
+		assessmentpage.validateQuestionAnswered(1);
+		assessmentpage.selectQuestionNumber(1);
+		Thread.sleep(3000);
+		assessmentpage.enterFillQuestion("1");
+		assessmentpage.clickSubmitButton();
+		Thread.sleep(2000);
+		assessmentpage.validateQuestionAnswered(1);
+		assessmentpage.selectQuestionNumber(5);
+		driver.navigate().back();
+		coursecontentpage.verifyCourseContentPage();
+		Thread.sleep(1000);
 	}
 
 }

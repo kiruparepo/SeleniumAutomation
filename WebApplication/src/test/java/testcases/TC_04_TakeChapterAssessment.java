@@ -46,7 +46,7 @@ public class TC_04_TakeChapterAssessment extends WebApplicationWrappers {
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
-		mycoursepage.clickGotoCourseButton();
+		mycoursepage.clickGotoCourseButton(1);
 		//coursecontentpage.clickChaptertitle("1");
 		Thread.sleep(2000);
 		
@@ -71,7 +71,7 @@ public class TC_04_TakeChapterAssessment extends WebApplicationWrappers {
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
 		
-		assessmentpage.clickAnswerSubmitButton();
+		assessmentpage.clickReadytoSubmitButton();
 		assessmentpage.VerifyPercentage("100%");
 		
 		Thread.sleep(5000);
