@@ -24,12 +24,12 @@ public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
 	@BeforeClass
 	public void startTestCase() {
 		testCaseName = " TC01 - Assessment Page navigation check ";
-		testDescription = " Go to Assessment Page and Check all navgation are working fine ";
+		testDescription = " Go to Assessment Page and Check all navigation are working fine ";
 	}
 
 
 	@Test
-	public void createAccount() throws InterruptedException {
+	public void navigation() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);

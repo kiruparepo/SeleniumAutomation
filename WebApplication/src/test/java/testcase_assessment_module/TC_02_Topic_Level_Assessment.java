@@ -23,13 +23,13 @@ public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC02 - Assessment Page navigation check ";
-		testDescription = " Go to Assessment Page and Check all navgation are working fine ";
+		testCaseName = " TC02 - Check User able to take on Topic level Assessment";
+		testDescription = " Go to Assessment Page and User to take on Topic level Assessment";
 	}
 
 
 	@Test
-	public void createAccount() throws InterruptedException {
+	public void topicLevelAssessment() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);

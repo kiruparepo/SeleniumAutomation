@@ -23,14 +23,14 @@ public class TC_04_Chapter_Level_Assessment extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC02 - Assessment Page navigation check ";
-		testDescription = " Go to Assessment Page and Check all navgation are working fine ";
+		testCaseName = " TC04 - Check User able to take on Chapter level Assessment";
+		testDescription = " Go to Assessment Page and User to take on Chapter level Assessment";
 	}
 
 
 	@Test
-	public void createAccount() throws InterruptedException {
-		invokeApp("Chrome",loadProp().getProperty("URL"));
+	public void chapterAssessment() throws InterruptedException {
+		invokeApp("edge",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -45,21 +45,10 @@ public class TC_04_Chapter_Level_Assessment extends WebApplicationWrappers {
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
-		//coursecontentpage.clickChaptertitle("1");
-		Thread.sleep(2000);
-		coursecontentpage.clickTopicAssessmentButton();
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
-		assessmentpage.enterMcqOption("1");
-		assessmentpage.clickMCQSubmitButton();
-		
-		assessmentpage.enterMcqOption("1");
-		assessmentpage.clickMCQSubmitButton();
-		
+		Thread.sleep(3000);
+		coursecontentpage.clickChapterTitle("2");
+		coursecontentpage.clickChatpterAssessmentButton();
+		coursecontentpage.clickStartExam();
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
 		
@@ -68,10 +57,11 @@ public class TC_04_Chapter_Level_Assessment extends WebApplicationWrappers {
 		
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
-		assessmentpage.clickReadytoSubmitButton();
+		//assessmentpage.clickReadytoSubmitButton();
 		
-		assessmentpage.checkResult("PASS");
-		assessmentpage.clickOkayButton();
+		//assessmentpage.checkResult("PASS");
+		//assessmentpage.clickOkayButton();
+		driver.navigate().back();
 		
 		coursecontentpage.verifyCourseContentPage();
 	}

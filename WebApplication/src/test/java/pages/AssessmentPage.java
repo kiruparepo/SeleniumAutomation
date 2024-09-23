@@ -83,7 +83,7 @@ public class AssessmentPage extends GenericWrappers {
 		}
 		
 		public void enterMcqOption(String ans) {
-			scrollToElement(getAnswerField(ans));
+			scrollToElements(getAnswerField(ans));
 			clickbyXpath(getAnswerField(ans)," Assessment Answer Input ");
 		}
 		
@@ -117,12 +117,12 @@ public class AssessmentPage extends GenericWrappers {
 		
 		
 		public void checkResult(String result) {
-			verifyTextContainsByXpath(resultField, " Check Result ", result);
+			verifyTextContainsByXpath(resultField, result," Check Result ");
 			
 		}
 		
 		public void clickMCQSubmitButton() {
-			scrollToElement(submitButton);
+			scrollToElements(submitButton);
 			clickbyXpath(submitButton, " Submit Button ");
 			
 		}
@@ -133,6 +133,7 @@ public class AssessmentPage extends GenericWrappers {
 		}
 
 		public void clickSubmitButton() {
+			scrollToElements(SubmitButton);
 			clickbyXpath(SubmitButton, " Submit Button ");
 		}
 
@@ -180,5 +181,40 @@ public class AssessmentPage extends GenericWrappers {
         	e.printStackTrace();
         }
         
+		}
+		
+
+		public void completeCourseAssessment() {
+			
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterMcqOption("1");
+			clickMCQSubmitButton();
+			enterMcqOption("1");
+			clickMCQSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterMcqOption("1");
+			clickMCQSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			enterFillQuestion("1");
+			clickSubmitButton();
+			clickoverAllSubmitButton();
+			clickCheckBox();
+			//clickReadytoSubmitButton();
+			//clickOkayButton();
+			// TODO Auto-generated method stub
+			
 		}
 	}

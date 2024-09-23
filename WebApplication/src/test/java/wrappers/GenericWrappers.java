@@ -66,9 +66,6 @@ public class GenericWrappers {
 			dc.setPlatform(Platform.WINDOWS);
 			if (browser.equalsIgnoreCase("chrome")) {
 				WebDriverManager.chromedriver().setup();
-				// System.setProperty("webdriver.chrome.driver",
-				// "C:\\Users\\invcusor106\\Downloads\\chromedriver_win32
-				// (4)\\chromedriver.exe");
 				driver = new ChromeDriver();
 			} else {
 				WebDriverManager.edgedriver();

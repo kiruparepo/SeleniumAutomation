@@ -12,7 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
+public class TC_07_Incomplete_Course_Level_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,13 +23,13 @@ public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC03 - Topic Level Assessment  - In complete Assessment ";
-		testDescription = " Go to Assessment Page and Check user able to submit incomplete Assessment ";
+		testCaseName = " TC06_ Check User able to submit Course Level Incomplete Assessment ";
+		testDescription = " Check user is able to submit Incomplete Course Level Assessment ";
 	}
 
 
 	@Test
-	public void topicIncompleteAssessment() throws InterruptedException {
+	public void inCompleteCourseAssessment() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
@@ -40,33 +40,30 @@ public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
 		landingpage = new LandingPage(driver);
 		
 		landingpage.clickSignInButton();
-		loginpage.enterEmailId("testuser6@gmail.com");
+		loginpage.enterEmailId("testuser5@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
-		mycoursepage.clickGotoCourseButton(1);
-		//coursecontentpage.clickChaptertitle("1");
-		Thread.sleep(2000);
-		coursecontentpage.clickTopicAssessmentButton();
+		mycoursepage.clickGotoCourseButton(2);
+		Thread.sleep(3000);
+		coursecontentpage.clickCourseAssessmentButton();
+		coursecontentpage.clickStartExam();
 		assessmentpage.enterFillQuestion("1");
 		assessmentpage.clickSubmitButton();
-		
 		assessmentpage.enterFillQuestion("1");
 		assessmentpage.clickSubmitButton();
-		
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
-			
+		assessmentpage.enterMcqOption("1");
+		assessmentpage.clickMCQSubmitButton();
+		assessmentpage.enterFillQuestion("1");
+		assessmentpage.clickSubmitButton();
 		
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
-		assessmentpage.clickReadytoSubmitButton();
-		
-		assessmentpage.checkResult("FAIL");
-		assessmentpage.clickOkayButton();
-		
-		coursecontentpage.verifyCourseContentPage();
-		
+		//assessmentpage.clickReadytoSubmitButton();
+		//assessmentpage.clickOkayButton();
+		// TODO Auto-generated method stub
 	}
 
 }

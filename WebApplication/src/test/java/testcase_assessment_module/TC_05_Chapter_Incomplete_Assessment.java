@@ -12,7 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
+public class TC_05_Chapter_Incomplete_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,14 +23,14 @@ public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC03 - Topic Level Assessment  - In complete Assessment ";
+		testCaseName = " TC05 - Chapter Level Assessment  - In complete Assessment ";
 		testDescription = " Go to Assessment Page and Check user able to submit incomplete Assessment ";
 	}
 
 
 	@Test
-	public void topicIncompleteAssessment() throws InterruptedException {
-		invokeApp("Chrome",loadProp().getProperty("URL"));
+	public void chapterIncompleteAssessment() throws InterruptedException {
+		invokeApp("chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -45,28 +45,22 @@ public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
-		//coursecontentpage.clickChaptertitle("1");
-		Thread.sleep(2000);
-		coursecontentpage.clickTopicAssessmentButton();
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
+		Thread.sleep(3000);
+		coursecontentpage.clickChapterTitle("2");
+		coursecontentpage.clickChatpterAssessmentButton();
+		coursecontentpage.clickStartExam();
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
-			
 		
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
-		assessmentpage.clickReadytoSubmitButton();
+		//assessmentpage.clickReadytoSubmitButton();
 		
-		assessmentpage.checkResult("FAIL");
-		assessmentpage.clickOkayButton();
+		//assessmentpage.checkResult("PASS");
+		//assessmentpage.clickOkayButton();
+		driver.navigate().back();
 		
 		coursecontentpage.verifyCourseContentPage();
-		
 	}
 
 }

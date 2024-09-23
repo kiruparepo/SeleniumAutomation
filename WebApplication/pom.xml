@@ -25,16 +25,11 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.7.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>4.22.0</version>
 		</dependency>
 
 		<dependency>
@@ -44,11 +39,15 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-driver</artifactId>
-			<version>4.13.0</version>
+			<artifactId>selenium-java</artifactId>
+			<version>4.24.0</version>
 		</dependency>
+
 
 </dependencies>
 	
