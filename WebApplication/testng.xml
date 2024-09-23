@@ -12,6 +12,7 @@
         <package name="profilePageModule" />
         <package name="signInPageModule" />
         <package name="testcases" />
+        <package name="testcase_assessment_module" />
     </packages>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->

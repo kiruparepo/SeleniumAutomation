@@ -244,7 +244,7 @@ public class SignInPage extends WebApplicationWrappers {
 		verifyTextContainsByXpath(forgetpasswordTile, "Forget Password","Forget password title ");
 
 		// check emailtextbox placeholder name
-		verifyTextContainsByXpath(Forgetpassemailfield, "Enter your user email","Forget password email");
+		attributevalue(Forgetpassemailfield, "placeholder", "Enter your user email");
 
 		// verify error message of forget password page
 		clickbyXpath(generateOTP, "Generate OTP button ");

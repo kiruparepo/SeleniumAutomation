@@ -330,7 +330,6 @@ public class GenericWrappers {
 		try {
 
 			String ele = xpath.getAttribute(attribute);
-			System.out.println(ele);
 			if (ele.contains(txt)) {
 				Reporter.reportStep("The attribute value :" + attribute + "equals to expected valule:" + txt, "PASS");
 			} else {
