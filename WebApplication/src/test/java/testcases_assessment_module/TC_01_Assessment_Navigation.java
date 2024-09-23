@@ -41,7 +41,7 @@ public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
 		
 		landingpage.clickSignInButton();
 		loginpage.enterEmailId("testuser6@gmail.com");
-		loginpage.enterPassword("Welcome@124");
+		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);

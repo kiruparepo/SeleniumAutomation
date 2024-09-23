@@ -70,7 +70,7 @@ public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
 		assessmentpage.clickCheckBox();
 		assessmentpage.clickReadytoSubmitButton();
 		
-		assessmentpage.checkResult("PASS");
+		assessmentpage.checkResult("Pass");
 		assessmentpage.clickOkayButton();
 		
 		coursecontentpage.verifyCourseContentPage();
