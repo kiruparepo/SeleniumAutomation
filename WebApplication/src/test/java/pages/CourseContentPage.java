@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import utils.Reporter;
 import wrappers.GenericWrappers;
 
@@ -23,7 +22,7 @@ public class CourseContentPage extends GenericWrappers{
     @FindBy(xpath = "//div[text()='Sign up']")
     private WebElement signUpButton;
     
-    @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[2]")
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[1]")
     private WebElement topicVideoButton;
     
     @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[2]")
@@ -32,11 +31,20 @@ public class CourseContentPage extends GenericWrappers{
     @FindBy(xpath = "//div[contains(@class,'video_play_progress')]")
     private WebElement videoProgressBar;
     
-    @FindBy(xpath = "//*[@color='#21B573']")
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Body_Container_After_Buy')])[1]//*[@color='#21B573']")
 	private WebElement greenTickField;
-	
+    
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_completed_Icon_View')])[1]//*[@color='#21B573']")
+	private WebElement chapterCompletionGreenTick;
+    
+    @FindBy(xpath = "(//div[contains(@class,'Course_Content_chapter_Assessment_View')])[1]//*[@color='#21B573']")
+	private WebElement chapterAssessmentCompletionGreenTick;
+    
 	@FindBy(xpath = "//div[contains(@class,'Course_Content_chapter_Assessment_View')]")
 	private WebElement chapterAssessmentButton;
+	
+	@FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View')])[4]")
+	private WebElement courseAssessmentButton;
 	
 	@FindBy(xpath = "//div[contains(@class,'Exam_Instruction_submit_button')]/div")
 	private WebElement examInstStartExamButton;
@@ -50,7 +58,14 @@ public class CourseContentPage extends GenericWrappers{
 	@FindBy(xpath = "//div[contains(@class,'Course_Content_course_Title')]/div")
 	private WebElement courseTitle;
 	
+	@FindBy(xpath = "(//div[contains(@class,'Course_Content_doc_Assests_num')])[1]")
+	private WebElement videosCountField;
 	
+	@FindBy(xpath = "(//div[contains(@class,'Course_Content_doc_Assests_num')])[2]")
+	private WebElement assessmentCountField;
+	
+	@FindBy(xpath = "(//div[contains(@class,'Course_Content_doc_Assests_num')])[1]")
+	private WebElement assessmentsCountField;
 	
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_chapter_Name_Text')])[1]")
 	private WebElement secondChapterField;
@@ -77,8 +92,6 @@ public class CourseContentPage extends GenericWrappers{
     	return driver.findElement(By.xpath("(//div[contains(@class,'Course_Content_topic_Name_Text')]/div)["+chapternum+"]"));
     }
  
- 
-    
     public CourseContentPage(WebDriver driver) {
         this.driver=driver;
         PageFactory.initElements(driver, this);
@@ -95,23 +108,16 @@ public class CourseContentPage extends GenericWrappers{
         String xpath = String.format("(//div[contains(@class,'Course_Content_topic_Name_Text')]/div)["+num+"]");
         return driver.findElement(By.xpath(xpath));
     }
-	
-	
-	private static String chapternumber1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-
-	public void clickChaptertitle(String num) {
-		scrollToElement(getChapterField(num));
-		clickbyXpath(getChapterField(num)," Chapter Title ");
+	public void clickChapterTitle(String num) {
+		scrollToElements(getChapterField(num));
+		clickbyXpath(getChapterField(num)," Chapter Title  "+num+" ");
 		
 	}
 	
 	public void clickTopictitle(String num) {
-		scrollToElement(getTopicField(num));
-		clickbyXpath(getTopicField(num)," Topic Title ");
+		scrollToElements(getTopicField(num));
+		clickbyXpath(getTopicField(num)," Topic Title "+num+" ");
 		
 	}
 	
@@ -121,18 +127,37 @@ public class CourseContentPage extends GenericWrappers{
 	}
 	
 	public void clickTopicAssessmentButton() {
+		if(greenTickField.isDisplayed()) {
+		scrollToElements(topicAssessmentButton);
 		clickbyXpath(topicAssessmentButton," Topic Assessment button ");
+		}
+		else {
+			completeVideoandVerifyGreenTick();
+			clickbyXpath(topicAssessmentButton," Topic Assessment button ");
+		}
 		
 	}
+	
+	public void clickCourseAssessmentButton() {
+		scrollToElements(courseAssessmentButton);
+		clickbyXpath(courseAssessmentButton," Course Assessment button ");
+		
+	}
+	
 
     
 	public void completeVideoandVerifyGreenTick() {
-
 	jsExecutor = (JavascriptExecutor) driver;
 	jsExecutor.executeScript("arguments[0].currentTime = arguments[0].duration;", videoField);
 	verifyElementVisible(greenTickField," Green Tick Mark ");
-	
 	}
+	
+	public void checkChapterAssessmentVerifyGreenTick() {
+		scrollToElements(chapterAssessmentCompletionGreenTick);
+		verifyElementVisible(chapterAssessmentCompletionGreenTick," Green Tick Mark ");
+		
+		}
+		
 	
 	public void checkAssessmentCompletedToast() {
 		verifyElementVisible(assessmentToastMessage,"Already completed Assessment Toast");
@@ -153,11 +178,22 @@ public class CourseContentPage extends GenericWrappers{
     }
     
     public void clickAssessmentButton() {
+    	scrollToElements(topicAssessmentButton);
     	clickbyXpath(topicAssessmentButton,"Topic Level Assessment Button ");
     }
     
     public void checkToastMeseage(String toast) {
     	verifyTextContainsByXpath(assessmentToastMessage,toast, "Toast Message");
+    }
+    
+    public void checkvideosCount(String count) {
+    	verifyTextContainsByXpath(videosCountField,count, "Total video Count ");
+    	
+    }
+    
+    public void checkAssessmentCount(String count) {
+    	verifyTextContainsByXpath(assessmentCountField,count, "Total Assessment Count ");
+    	
     }
     
     public void clickGotoCourseButton() {
@@ -187,6 +223,15 @@ public class CourseContentPage extends GenericWrappers{
     	}
     }
     
+    public void verifyChapterAssessmnetPresent() {
+    	if(chapterAssessmentButton.isDisplayed())
+    	{
+    		Reporter.reportStep("Chapter level Assessment present in the page", "PASS");
+    	}
+    	else {
+    		Reporter.reportStep("Chapter level Assessment is not present in the page", "FAIL");
+    	}
+    }
   
     
 }
