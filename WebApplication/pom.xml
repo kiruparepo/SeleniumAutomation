@@ -38,8 +38,7 @@
 			<version>7.9.0</version>
 			<scope>test</scope>
 		</dependency>
-
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -47,8 +46,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.24.0</version>
 		</dependency>
-
-
 </dependencies>
 	
 	
