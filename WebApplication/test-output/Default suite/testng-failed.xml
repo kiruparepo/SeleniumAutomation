@@ -3,30 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-      <class name="testcase_assessment_module.TC_02_Topic_Level_Assessment">
+      <class name="allCourseModule.TC_01_AllcoursePage">
         <methods>
           <include name="beforeMethod"/>
           <include name="startTestCase"/>
-          <include name="createAccount"/>
-=======
-      <class name="profilePageModule.TC_02_ProfilePage">
-        <methods>
-          <include name="beforeMethod"/>
-          <include name="Profilepage"/>
-          <include name="startTestCase"/>
->>>>>>> b77cf8861b84ea96ca97a7c9476556d4f1a4e87c
+          <include name="AllcoursePage"/>
           <include name="beforeSuite"/>
-          <include name="beforeTest"/>
           <include name="afterMethod"/>
-          <include name="afterSuite"/>
+          <include name="beforeTest"/>
           <include name="afterTest"/>
+          <include name="afterSuite"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- testcase_assessment_module.TC_02_Topic_Level_Assessment -->
-=======
-      </class> <!-- profilePageModule.TC_02_ProfilePage -->
->>>>>>> b77cf8861b84ea96ca97a7c9476556d4f1a4e87c
+      </class> <!-- allCourseModule.TC_01_AllcoursePage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

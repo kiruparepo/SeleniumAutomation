@@ -35,10 +35,7 @@ public class AllCoursePage extends WebApplicationWrappers{
 	  
 	  @FindBy(xpath = "//div[contains(@class,' css-hlgwow')]") 
 	  private WebElement dropdown;
-	  
-//	  @FindBy(xpath = "//input[contains(@class,'All_Courses_search_input__6DawA')]")
-//	  private WebElement searchbox;
-	  
+	  	  
 	  @FindBy(xpath = "//div[contains(@class,'All_Courses_subject_Text__9qR9e')]")
 	  private List<WebElement> subjectHeading;
 	  
@@ -113,14 +110,12 @@ public class AllCoursePage extends WebApplicationWrappers{
 
 				// Compare the counts and validate
 				if (expandedCourseCount > initialCourseCount) {
-					System.out.println("See All Courses button is working for container " + (i + 1));
-				} else {
-					System.out.println("See All Courses button did not work for container " + (i + 1));
+					pass("See All Courses button is working for container "+ (i + 1));
 				}
 
 			} else {
 				// Log a message if there is no "See All Courses" button
-				System.out.println("No 'See All Courses' button for container " + (i + 1) + " due to fewer courses.");
+				pass("No 'See All Courses' button for container"+ (i + 1) +" due to fewer courses.");
 			}
 		}
 	}
@@ -178,7 +173,9 @@ public class AllCoursePage extends WebApplicationWrappers{
 					// Click using JavaScript to avoid intercept issues
 					js.executeScript("arguments[0].click();", seeAllButton);
 					Thread.sleep(3000); // Wait for courses to load
+					pass("clicked on see all button");
 				} catch (Exception e) {
+					pass("See all button is not visible due to few courses");
 					seeAllVisible = false; // Button no longer available
 				}
 			}
@@ -196,23 +193,14 @@ public class AllCoursePage extends WebApplicationWrappers{
 			clickbyXpath(dropdown, "Click on Subject dropdown ");
 			Thread.sleep(1000); // Small wait to ensure dropdown is opened
 
-//		            for (WebElement element : dropdownxpath) {
-//						  String attributeValue = element.getText();
-//						  System.out.println(attributeValue); 
-//						  if (attributeValue.equals(subjectText)) { //
-//						 //Perform an action with the element (e.g., click it) 
-//						 element.click(); 
-//						 break; 
-//						 } 
-//				    }
 			for (WebElement option : dropdownxpath) {
 				if (option.getText().equals(subjectText)) {
 					option.click();
+					pass(subjectText+"is clicked on dropdown");
 					break;
 				}
 			}
 
-//		            driver.navigate().refresh();
 			Thread.sleep(2000);
 
 			subjectcontainers = driver.findElements(By.xpath(subjectContainerXPath));
@@ -242,8 +230,10 @@ public class AllCoursePage extends WebApplicationWrappers{
 
 						// Click using JavaScript to avoid intercept issues
 						js.executeScript("arguments[0].click();", seeAllButtonDropdown);
+						pass("clicked See all button");
 						Thread.sleep(3000); // Wait for courses to load
 					} catch (Exception e) {
+						pass("See all button not visible in dropdown courses due to few courses");
 						seeAllVisibleDropdown = false; // Button no longer available
 					}
 				}
@@ -252,16 +242,16 @@ public class AllCoursePage extends WebApplicationWrappers{
 				List<WebElement> expandedCoursesDropdown = currentContainerloop2
 						.findElements(By.xpath(courseCardXPath));
 				dropdownPageCount = expandedCoursesDropdown.size();
-				System.out.println(
-						"Expanded number of courses in dropdown container " + (k + 1) + ": " + dropdownPageCount);
+				pass("Expanded number of courses in dropdown container " + (k + 1) + ": " + dropdownPageCount);
+//				System.out.println("Expanded number of courses in dropdown container " + (k + 1) + ": " + dropdownPageCount);
 			}
 			// Compare the course counts between "All Courses" page and Dropdown
 			if (allCoursesPageCount != dropdownPageCount) {
-				System.out.println("Mismatch: counts of Courses in 'All Courses' page and selected subject '"
-						+ subjectText + "' do not match.");
+				fail("Mismatch: counts of Courses in 'All Courses' page and selected subject '"+ subjectText + "' do not match.");
+//				System.out.println("Mismatch: counts of Courses in 'All Courses' page and selected subject '"+ subjectText + "' do not match.");
 			} else {
-				System.out.println("Match: Count of Courses in 'All Courses' page and selected subject '" + subjectText
-						+ "' are the same.");
+				pass("Match: Count of Courses in 'All Courses' page and selected subject '" + subjectText+ "' are the same.");
+//				System.out.println("Match: Count of Courses in 'All Courses' page and selected subject '" + subjectText+ "' are the same.");
 			}
 
 			js.executeScript("window.scrollTo(0, 0);");
@@ -274,7 +264,11 @@ public class AllCoursePage extends WebApplicationWrappers{
 			for (WebElement option : dropdownxpath) {
 				if (option.getText().equals("All Subjects")) {
 					option.click();
+					pass("clicked on ALL SUBJECTS from dropdown");
 					break;
+				}
+				else {
+					fail("unable to click on ALL SUBJECTS from dropdown");
 				}
 			}
 			Thread.sleep(3000);
@@ -331,8 +325,10 @@ public class AllCoursePage extends WebApplicationWrappers{
 
 					// Click using JavaScript to avoid intercept issues
 					js.executeScript("arguments[0].click();", seeAllButton);
+					pass("clicked on SeeALLButton");
 					Thread.sleep(3000); // Wait for courses to load
 				} catch (Exception e) {
+					pass("Unable to click on See all button due to Few courses");
 					seeAllVisible = false; // Button no longer available
 				}
 			}
@@ -357,6 +353,8 @@ public class AllCoursePage extends WebApplicationWrappers{
 
 			searchboxXpath.sendKeys(cards.get(i));
 			searchboxXpath.sendKeys(Keys.ENTER);
+			
+			pass("entered Search data on search box field");
 			Thread.sleep(2000);
 
 			WebElement resultcount = driver.findElement(By.xpath(results));
