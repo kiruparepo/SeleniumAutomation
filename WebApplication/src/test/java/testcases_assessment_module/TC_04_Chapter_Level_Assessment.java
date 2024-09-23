@@ -1,4 +1,4 @@
-package testcase_assessment_module;
+package testcases_assessment_module;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

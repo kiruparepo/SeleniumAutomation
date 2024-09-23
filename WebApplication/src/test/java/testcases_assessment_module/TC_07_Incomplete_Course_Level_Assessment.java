@@ -1,4 +1,4 @@
-package testcase_assessment_module;
+package testcases_assessment_module;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_05_Chapter_Incomplete_Assessment extends WebApplicationWrappers {
+public class TC_07_Incomplete_Course_Level_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,14 +23,14 @@ public class TC_05_Chapter_Incomplete_Assessment extends WebApplicationWrappers 
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC05 - Chapter Level Assessment  - In complete Assessment ";
-		testDescription = " Go to Assessment Page and Check user able to submit incomplete Assessment ";
+		testCaseName = " TC06_ Check User able to submit Course Level Incomplete Assessment ";
+		testDescription = " Check user is able to submit Incomplete Course Level Assessment ";
 	}
 
 
 	@Test
-	public void chapterIncompleteAssessment() throws InterruptedException {
-		invokeApp("chrome",loadProp().getProperty("URL"));
+	public void inCompleteCourseAssessment() throws InterruptedException {
+		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -40,27 +40,30 @@ public class TC_05_Chapter_Incomplete_Assessment extends WebApplicationWrappers 
 		landingpage = new LandingPage(driver);
 		
 		landingpage.clickSignInButton();
-		loginpage.enterEmailId("testuser6@gmail.com");
+		loginpage.enterEmailId("testuser5@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
-		mycoursepage.clickGotoCourseButton(1);
+		mycoursepage.clickGotoCourseButton(2);
 		Thread.sleep(3000);
-		coursecontentpage.clickChapterTitle("2");
-		coursecontentpage.clickChatpterAssessmentButton();
+		coursecontentpage.clickCourseAssessmentButton();
 		coursecontentpage.clickStartExam();
+		assessmentpage.enterFillQuestion("1");
+		assessmentpage.clickSubmitButton();
+		assessmentpage.enterFillQuestion("1");
+		assessmentpage.clickSubmitButton();
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
+		assessmentpage.enterMcqOption("1");
+		assessmentpage.clickMCQSubmitButton();
+		assessmentpage.enterFillQuestion("1");
+		assessmentpage.clickSubmitButton();
 		
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
 		//assessmentpage.clickReadytoSubmitButton();
-		
-		//assessmentpage.checkResult("PASS");
 		//assessmentpage.clickOkayButton();
-		driver.navigate().back();
-		
-		coursecontentpage.verifyCourseContentPage();
+		// TODO Auto-generated method stub
 	}
 
 }

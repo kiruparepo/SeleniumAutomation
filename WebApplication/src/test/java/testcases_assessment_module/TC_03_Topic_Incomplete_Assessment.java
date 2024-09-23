@@ -1,4 +1,4 @@
-package testcase_assessment_module;
+package testcases_assessment_module;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
+public class TC_03_Topic_Incomplete_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,13 +23,13 @@ public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC02 - Check User able to take on Topic level Assessment";
-		testDescription = " Go to Assessment Page and User to take on Topic level Assessment";
+		testCaseName = " TC03 - Topic Level Assessment  - In complete Assessment ";
+		testDescription = " Go to Assessment Page and Check user able to submit incomplete Assessment ";
 	}
 
 
 	@Test
-	public void topicLevelAssessment() throws InterruptedException {
+	public void topicIncompleteAssessment() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
@@ -56,24 +56,17 @@ public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
 		
 		assessmentpage.enterMcqOption("1");
 		assessmentpage.clickMCQSubmitButton();
-		
-		assessmentpage.enterMcqOption("1");
-		assessmentpage.clickMCQSubmitButton();
-		
-		assessmentpage.enterMcqOption("1");
-		assessmentpage.clickMCQSubmitButton();
-		
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();	
+			
 		
 		assessmentpage.clickoverAllSubmitButton();
 		assessmentpage.clickCheckBox();
 		assessmentpage.clickReadytoSubmitButton();
 		
-		assessmentpage.checkResult("Pass");
+		assessmentpage.checkResult("FAIL");
 		assessmentpage.clickOkayButton();
 		
 		coursecontentpage.verifyCourseContentPage();
+		
 	}
 
 }

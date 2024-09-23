@@ -191,10 +191,13 @@ public class LandingPage extends GenericWrappers{
 	    
 
 	    public void checkexplorecourse() {
+	    	
+	    	jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", Explorecourse);
             verifyTextContainsByXpath(Explorecourse, "Explore Our Course","Explore course text ");
 		}
 	     
 	    public void clickexplorecourse() {
+	    	jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", Explorecourse);
 	    	clickbyXpath(Explorecourse, "Explore Our Course" );
 	    }
 	   

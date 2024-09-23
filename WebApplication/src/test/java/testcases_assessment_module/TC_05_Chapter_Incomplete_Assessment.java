@@ -1,7 +1,8 @@
-package testcase_assessment_module;
+package testcases_assessment_module;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import pages.AssessmentPage;
 import pages.CourseContentPage;
 import pages.CreateAccountPage;
@@ -11,8 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-
-public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
+public class TC_05_Chapter_Incomplete_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,14 +23,14 @@ public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC01 - Assessment Page navigation check ";
-		testDescription = " Go to Assessment Page and Check all navigation are working fine ";
+		testCaseName = " TC05 - Chapter Level Assessment  - In complete Assessment ";
+		testDescription = " Go to Assessment Page and Check user able to submit incomplete Assessment ";
 	}
 
 
 	@Test
-	public void navigation() throws InterruptedException {
-		invokeApp("Chrome",loadProp().getProperty("URL"));
+	public void chapterIncompleteAssessment() throws InterruptedException {
+		invokeApp("chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
 		createacpage= new CreateAccountPage(driver);
@@ -45,21 +45,22 @@ public class TC_01_Assessment_Navigation extends WebApplicationWrappers {
 		loginpage.clickSubmitButton();
 		homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
-		//coursecontentpage.clickChaptertitle("1");
-		Thread.sleep(2000);
-		coursecontentpage.clickTopicAssessmentButton();
-		assessmentpage.clickNextButton();
-		assessmentpage.validateQuestionAnswered(1);
-		assessmentpage.selectQuestionNumber(1);
 		Thread.sleep(3000);
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		Thread.sleep(2000);
-		assessmentpage.validateQuestionAnswered(1);
-		assessmentpage.selectQuestionNumber(5);
+		coursecontentpage.clickChapterTitle("2");
+		coursecontentpage.clickChatpterAssessmentButton();
+		coursecontentpage.clickStartExam();
+		assessmentpage.enterMcqOption("1");
+		assessmentpage.clickMCQSubmitButton();
+		
+		assessmentpage.clickoverAllSubmitButton();
+		assessmentpage.clickCheckBox();
+		//assessmentpage.clickReadytoSubmitButton();
+		
+		//assessmentpage.checkResult("PASS");
+		//assessmentpage.clickOkayButton();
 		driver.navigate().back();
+		
 		coursecontentpage.verifyCourseContentPage();
-		Thread.sleep(1000);
 	}
 
 }

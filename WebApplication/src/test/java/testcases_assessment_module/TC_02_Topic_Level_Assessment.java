@@ -1,4 +1,4 @@
-package testcase_assessment_module;
+package testcases_assessment_module;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import pages.LoginPage;
 import pages.MyCoursePage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_08_Pass_Fail_Check extends WebApplicationWrappers {
+public class TC_02_Topic_Level_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
 	CreateAccountPage createacpage;
@@ -23,13 +23,13 @@ public class TC_08_Pass_Fail_Check extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC07 - Assessment PASS/FAIL Check ";
-		testDescription = " Take Assessment and check PASS/FAIL coming correctly based on results ";
+		testCaseName = " TC02 - Check User able to take on Topic level Assessment";
+		testDescription = " Go to Assessment Page and User to take on Topic level Assessment";
 	}
 
 
 	@Test
-	public void passFailCheck() throws InterruptedException {
+	public void topicLevelAssessment() throws InterruptedException {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
@@ -72,22 +72,6 @@ public class TC_08_Pass_Fail_Check extends WebApplicationWrappers {
 		
 		assessmentpage.checkResult("Pass");
 		assessmentpage.clickOkayButton();
-		
-		
-		coursecontentpage.clickTopicAssessmentButton();
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
-		assessmentpage.enterFillQuestion("1");
-		assessmentpage.clickSubmitButton();
-		
-		assessmentpage.clickoverAllSubmitButton();
-		assessmentpage.clickCheckBox();
-		assessmentpage.clickReadytoSubmitButton();
-		
-		assessmentpage.checkResult("Fail");
-		assessmentpage.clickOkayButton();
-		
 		
 		coursecontentpage.verifyCourseContentPage();
 	}

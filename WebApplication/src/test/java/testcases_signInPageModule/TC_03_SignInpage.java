@@ -1,4 +1,4 @@
-package signInPageModule;
+package testcases_signInPageModule;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ import pages.ProfilePage;
 import pages.SignInPage;
 import wrappers.WebApplicationWrappers;
 
-public class TC_04_SignInpage extends WebApplicationWrappers {
+public class TC_03_SignInpage extends WebApplicationWrappers {
 
 	LoginPage loginpage;
 	LandingPage LandingPage;
@@ -20,11 +20,11 @@ public class TC_04_SignInpage extends WebApplicationWrappers {
 	CartPage cartPage;
 	SignInPage signinpage;
 	
-
+	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = "TC_04_check SignIN- Password page  ";
-		testDescription = "To check SignIN- Password page and its all fields and error messages";
+		testCaseName = "TC_03_check signin OTPverification page  ";
+		testDescription = "To check OTP verification  page and its all fields and error messages";
 	}
 
 
@@ -40,9 +40,6 @@ public class TC_04_SignInpage extends WebApplicationWrappers {
 		cartPage= new CartPage(driver);
 		signinpage= new SignInPage(driver);
 		
-		
-		signinpage.checkChangePasswordpageerrormessage();
-		signinpage.Resetnewpassword();
-		
+		signinpage.checkOTPverificationpage();
 	}
 }

@@ -46,7 +46,7 @@ public class TC_04_CreateAccount extends WebApplicationWrappers {
 		createacpage.clickSubmitButton();
 		createacpage.checkNameErrMsg1();
 		createacpage.clearnamefield();
-		createacpage.enterUserName("as");
+		createacpage.enterUserName("a1");
 		createacpage.clickSubmitButton();
 		createacpage.checkNameErrMsg1();
 		createacpage.clearnamefield();
