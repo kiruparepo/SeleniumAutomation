@@ -25,14 +25,12 @@ public class TC_Sample extends WebApplicationWrappers {
 		homePageNew=new HomePageNew(driver);
 		
 		launchApplication(loadProp().getProperty("URL"));
+		
 		verifyTitle("Welcome Back!");
-		//invokeApp("Chrome",loadProp().getProperty("URL"));
+		
 		signInPage.enterEmail("kirupakaran.p@belstern.com");
 		signInPage.clickSignInNextButton();
 		signInPage.clickSignInNextButton();
-		
-		
-		
 		
 		signInPage.checkLoginNameError("User could not be found");
 		
