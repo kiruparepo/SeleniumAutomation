@@ -11,16 +11,16 @@ import com.aventstack.extentreports.ExtentTest;
 
 import wrappers.WebApplicationWrappers;
 
-public class HomePageNew extends WebApplicationWrappers {
+public class CurrentApplicationPage extends WebApplicationWrappers {
 
 	static ExtentTest test;
 	static ExtentReports report;
 
-	@FindBy(xpath = "//button[@name='new service']")
-	private WebElement createWorkspaceButton;
+	@FindBy(xpath = "//button[@name='new_application']")
+	private WebElement createApplicationBtn;
 
-	@FindBy(xpath = "//input[@id=':r1:']")
-	private WebElement workSpaceName;
+	@FindBy(xpath = "//input[@name='search']")
+	private WebElement searchTextBox;
 
 	@FindBy(xpath = "//textarea[@name='description']")
 	private WebElement workSpaceDesc;
@@ -35,7 +35,7 @@ public class HomePageNew extends WebApplicationWrappers {
 	@FindBy(xpath = "//p[contains(text(),'User could not be found')]")
 	private WebElement errorLoginText;
 
-	public HomePageNew(WebDriver driver) {
+	public CurrentApplicationPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		this.jsExecutor = (JavascriptExecutor) driver;
@@ -43,12 +43,12 @@ public class HomePageNew extends WebApplicationWrappers {
 
 	public void clickCreateWorkSpaceBtn() {
 
-		clickbyXpath(createWorkspaceButton, "click on Create Workspace button");
+		clickbyXpath(createApplicationBtn, "click on Create Workspace button");
 
 	}
 	
 	public void enterWorkSpaceName(String name) {
-		enterValuebyXpath(workSpaceName, "WorkSpace name", name);
+		enterValuebyXpath(createWorspaceButton2, "WorkSpace name", name);
 	}
 	
 	public void enterWorkSpaceDesc(String desc) {

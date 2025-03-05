@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-03-03T16:56:09 IST" name="Default suite" finished-at="2025-03-03T16:56:11 IST" duration-ms="1897">
+  <suite started-at="2025-03-03T19:08:41 IST" name="Default suite" finished-at="2025-03-03T19:08:53 IST" duration-ms="11579">
     <groups>
     </groups>
-    <test started-at="2025-03-03T16:56:09 IST" name="Default test" finished-at="2025-03-03T16:56:11 IST" duration-ms="1897">
+    <test started-at="2025-03-03T19:08:41 IST" name="Default test" finished-at="2025-03-03T19:08:53 IST" duration-ms="11579">
       <class name="testcases_general.TC_Sample">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:04 IST" name="beforeSuite" finished-at="2025-03-03T16:56:09 IST" duration-ms="4728" status="PASS">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:35 IST" name="beforeSuite" finished-at="2025-03-03T19:08:41 IST" duration-ms="6246" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:09 IST" name="beforeTest" finished-at="2025-03-03T16:56:09 IST" duration-ms="5" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:41 IST" name="beforeTest" finished-at="2025-03-03T19:08:41 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="startTestCase()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:09 IST" name="startTestCase" finished-at="2025-03-03T16:56:09 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="startTestCase()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:41 IST" name="startTestCase" finished-at="2025-03-03T19:08:41 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startTestCase -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:09 IST" name="beforeMethod" finished-at="2025-03-03T16:56:09 IST" duration-ms="22" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:41 IST" name="beforeMethod" finished-at="2025-03-03T19:08:41 IST" duration-ms="27" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="signIntoAccont()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:09 IST" name="signIntoAccont" finished-at="2025-03-03T16:56:10 IST" duration-ms="1414" status="FAIL">
+        <test-method signature="signIntoAccont()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:41 IST" name="signIntoAccont" finished-at="2025-03-03T19:08:52 IST" duration-ms="10772" status="FAIL">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[FAILED]]>
@@ -31,8 +31,9 @@
             <full-stacktrace>
               <![CDATA[java.lang.RuntimeException: FAILED
 at utils.Reporter.reportStep(Reporter.java:48)
-at wrappers.GenericWrappers.launchApplication(GenericWrappers.java:97)
-at testcases_general.TC_Sample.signIntoAccont(TC_Sample.java:27)
+at wrappers.GenericWrappers.clickbyXpath(GenericWrappers.java:113)
+at pages.SignInPageNew.clickSignInNextButton(SignInPageNew.java:45)
+at testcases_general.TC_Sample.signIntoAccont(TC_Sample.java:33)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -67,15 +68,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- signIntoAccont -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:10 IST" name="afterMethod" finished-at="2025-03-03T16:56:11 IST" duration-ms="342" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:52 IST" name="afterMethod" finished-at="2025-03-03T19:08:53 IST" duration-ms="684" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:11 IST" name="afterTest" finished-at="2025-03-03T16:56:11 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:53 IST" name="afterTest" finished-at="2025-03-03T19:08:53 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T16:56:11 IST" name="afterSuite" finished-at="2025-03-03T16:56:11 IST" duration-ms="614" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcases_general.TC_Sample@765d7657]" started-at="2025-03-03T19:08:53 IST" name="afterSuite" finished-at="2025-03-03T19:08:53 IST" duration-ms="880" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

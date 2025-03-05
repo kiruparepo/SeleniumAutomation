@@ -7,7 +7,7 @@ import pages.HomePageNew;
 import pages.SignInPageNew;
 import wrappers.WebApplicationWrappers;
 
-public class TC_Sample extends WebApplicationWrappers {
+public class TC01_SignInandCreateWorkspace extends WebApplicationWrappers {
 	SignInPageNew signInPage;
 	HomePageNew homePageNew;
 	
@@ -15,12 +15,12 @@ public class TC_Sample extends WebApplicationWrappers {
 	@BeforeClass
 	public void startTestCase() {
 		testCaseName = " TC01 - Sign In to Account in HOF ";
-		testDescription = "  Sign In to Account in HOF ";
+		testDescription = "  Sign In to Account in HOF and Create Workspace ";
 	}
 
 
 	@Test
-	public void signIntoAccont() throws InterruptedException {
+	public void signInCreateWorkspace() throws InterruptedException {
 		signInPage= new SignInPageNew(driver);
 		homePageNew=new HomePageNew(driver);
 		

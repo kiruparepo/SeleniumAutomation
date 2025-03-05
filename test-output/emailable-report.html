@@ -9,14 +9,15 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">1,897</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">11,579</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testcases_general.TC_Sample</td><td><a href="#m0">signIntoAccont</a></td><td rowspan="1">1741001169279</td><td rowspan="1">1414</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testcases_general.TC_Sample</td><td><a href="#m0">signIntoAccont</a></td><td rowspan="1">1741009121555</td><td rowspan="1">10772</td></tr></tbody>
 </table>
 <h2>Default test</h2><h3 id="m0">testcases_general.TC_Sample#signIntoAccont</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.RuntimeException: FAILED
 	at utils.Reporter.reportStep(Reporter.java:48)
-	at wrappers.GenericWrappers.launchApplication(GenericWrappers.java:97)
-	at testcases_general.TC_Sample.signIntoAccont(TC_Sample.java:27)
+	at wrappers.GenericWrappers.clickbyXpath(GenericWrappers.java:113)
+	at pages.SignInPageNew.clickSignInNextButton(SignInPageNew.java:45)
+	at testcases_general.TC_Sample.signIntoAccont(TC_Sample.java:33)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
