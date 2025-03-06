@@ -1,15 +1,14 @@
-# SeleniumAutomation
+# Selenium Automation Framework
 
-This repository contains automated testing scripts for web applications using **Selenium WebDriver** and **Java**. The goal of this project is to demonstrate how to automate browser interactions for testing purposes.
+This repository contains automated testing scripts for web applications using **Selenium WebDriver** and **Java**.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
 - **Java JDK** 8 or higher installed.
-- **Maven** or **Gradle** (depending on your setup) for dependency management.
-- **Selenium WebDriver** (automated browser interaction tool).
-- A supported **Web Browser** (e.g., Chrome, Firefox, etc.) and its corresponding WebDriver (e.g., **ChromeDriver** for Google Chrome).
+- **Maven**  (depending on your setup) for dependency management.
+- A supported **Web Browser** (e.g., Chrome, Firefox, etc.).
   
 ### Installation
 
@@ -41,23 +40,6 @@ To set up the project locally:
     mvn test
     ```
 
-2. **Run Tests Using Gradle**:
-    To run the tests with Gradle, use the following:
-    ```bash
-    gradle test
-    ```
-
-3. **Run Specific Test Class**:
-    If you want to run a specific test class:
-    - For **Maven**:
-      ```bash
-      mvn -Dtest=YourTestClass test
-      ```
-    - For **Gradle**:
-      ```bash
-      gradle test --tests "YourTestClass"
-      ```
-
 ### Folder Structure
 
 Here is an overview of the project folder structure:
@@ -65,7 +47,45 @@ Here is an overview of the project folder structure:
 
 - **`src/test/java/testcases`**: Contains unit test cases (if any) related to the Selenium tests.
 - **`pom.xml`**: If you're using Maven, it defines dependencies and build settings.
-- **`build.gradle`**: If you're using Gradle, it defines dependencies and build settings.
+Make sure Maven is installed on your machine, and that the mvn command is available in your system's PATH. Here's how to check if Maven is installed correctly:
+
+## Install Maven in your machine
+
+- **`1. To install maven in your machine`**:
+Open the command prompt and type:  
+**mvn -v**
+
+If Maven is installed correctly, this will display the version of Maven along with Java details. If you still see an error, Maven might not be installed properly, or the PATH environment variable isn't set correctly.
+
+- **`2. Fixing the PATH (If Maven is Not Recognized):`**:
+If Maven is not recognized, you need to make sure Maven is properly added to the system's PATH.
+
+On Windows:
+Add Maven to the PATH:
+
+Find the location where Maven is installed (e.g., **C:\apache-maven\apache-maven-3.x.x**).
+
+Add Maven's bin directory to the PATH environment variable.
+
+To add Maven to the system PATH:
+
+Right-click on This PC or My Computer and choose Properties.
+Click on Advanced system settings on the left.
+In the System Properties window, click on the Environment Variables button.
+Under System Variables, find the Path variable, select it, and click Edit.
+Add the Maven bin directory to the path (e.g., **C:\apache-maven\apache-maven-3.x.x\bin**).
+Click OK to save.
+**Restart Command Prompt:**
+
+After adding Maven to the PATH, close and reopen the command prompt.
+Verify by typing:
+
+**mvn -v**
+
+- **`3. Run the Correct Command:`**:
+Once Maven is installed correctly and the mvn command works, navigate to your project directory and run the following command to execute your tests:
+
+**mvn test**
 
 ---
 
