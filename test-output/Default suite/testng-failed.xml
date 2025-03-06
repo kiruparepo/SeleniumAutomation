@@ -3,18 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases_general.TC_Sample">
+      <class name="testcases.TC05_CheckAllWorkSpace">
         <methods>
-          <include name="signIntoAccont"/>
           <include name="beforeMethod"/>
+          <include name="signInCreateWorkspace"/>
           <include name="beforeSuite"/>
-          <include name="startTestCase"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
+          <include name="startTestCase"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
         </methods>
-      </class> <!-- testcases_general.TC_Sample -->
+      </class> <!-- testcases.TC05_CheckAllWorkSpace -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

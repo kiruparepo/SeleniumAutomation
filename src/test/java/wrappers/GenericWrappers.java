@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -19,10 +20,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import utils.Reporter;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 
 public class GenericWrappers {
 
@@ -48,12 +56,92 @@ public class GenericWrappers {
 		return prop;
 	}
 
-	public static WebDriver initDriver() {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		return driver;
+	public static WebDriver initDriver(String platform, String browserName, boolean headless) {
+	    
+	    // Check platform and initialize browser accordingly
+	    if (platform.equalsIgnoreCase("Windows")) {
+	        // For Windows platform, we can use Chrome, Firefox, and Edge
+	        switch (browserName.toLowerCase()) {
+	            case "chrome":
+	                WebDriverManager.chromedriver().setup();
+	                ChromeOptions chromeOptions = new ChromeOptions();
+	                if (headless) {
+	                    chromeOptions.addArguments("--headless");
+	                    chromeOptions.addArguments("--disable-gpu"); // Disable GPU acceleration for headless mode
+	                    chromeOptions.addArguments("--window-size=1920x1080"); // Set window size for headless mode
+	                }
+	                driver = new ChromeDriver(chromeOptions);
+	                break;
+	            case "firefox":
+	                WebDriverManager.firefoxdriver().setup();
+	                FirefoxOptions firefoxOptions = new FirefoxOptions();
+	                if (headless) {
+	                    firefoxOptions.addArguments("--headless");
+	                }
+	                driver = new FirefoxDriver(firefoxOptions);
+	                break;
+	            case "edge":
+	                WebDriverManager.edgedriver().setup();
+	                EdgeOptions edgeOptions = new EdgeOptions();
+	                if (headless) {
+	                    edgeOptions.addArguments("--headless");
+	                    edgeOptions.addArguments("--disable-gpu");
+	                    edgeOptions.addArguments("--window-size=1920x1080");
+	                }
+	                driver = new EdgeDriver(edgeOptions);
+	                break;
+	            default:
+	                throw new IllegalArgumentException("Browser not supported on Windows: " + browserName);
+	        }
+	    } else if (platform.equalsIgnoreCase("macos") || platform.equalsIgnoreCase("mac")) {
+	        // For macOS, we can use Chrome, Firefox, Safari
+	        switch (browserName.toLowerCase()) {
+	            case "chrome":
+	                WebDriverManager.chromedriver().setup();
+	                ChromeOptions macChromeOptions = new ChromeOptions();
+	                if (headless) {
+	                    macChromeOptions.addArguments("--headless");
+	                    macChromeOptions.addArguments("--disable-gpu");
+	                    macChromeOptions.addArguments("--window-size=1920x1080");
+	                }
+	                driver = new ChromeDriver(macChromeOptions);
+	                break;
+	            case "firefox":
+	                WebDriverManager.firefoxdriver().setup();
+	                FirefoxOptions macFirefoxOptions = new FirefoxOptions();
+	                if (headless) {
+	                    macFirefoxOptions.addArguments("--headless");
+	                }
+	                driver = new FirefoxDriver(macFirefoxOptions);
+	                break;
+	            case "safari":
+	                // Safari only works on macOS, but headless mode isn't fully supported on macOS by default.
+	                // However, you can use it with Safari's experimental features.
+	                if (headless) {
+	                    // Safari headless mode setup is limited in certain versions of macOS.
+	                    SafariOptions safariOptions = new SafariOptions();
+	                    safariOptions.setCapability("safari.options", new HashMap<String, Object>() {{
+	                        put("args", new String[] { "--headless" });
+	                    }});
+	                    driver = new SafariDriver(safariOptions);
+	                } else {
+	                    driver = new SafariDriver();
+	                }
+	                break;
+	            default:
+	                throw new IllegalArgumentException("Browser not supported on macOS: " + browserName);
+	        }
+	    } else {
+	        throw new IllegalArgumentException("Unsupported platform: " + platform);
+	    }
+
+	    if (driver != null) {
+	        driver.manage().window().maximize(); // Maximize the window on initialization
+	    }
+
+	    return driver;
 	}
+
 
 	public boolean invokeApp(String browser, String url) {
 		boolean bReturn = false;
@@ -90,11 +178,12 @@ public class GenericWrappers {
 		boolean bReturn = false;
 		try {
 			driver.get(url);
-			Reporter.reportStep("The browser:" + url + " launched successfully", "PASS");
+			Thread.sleep(2000);
+			Reporter.reportStep("The browser: " + url + " launched successfully", "PASS");
 			bReturn = true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			Reporter.reportStep("The browser:" + url + " could not be launched", "FAIL");
+			Reporter.reportStep("The browser: " + url + " could not be launched", "FAIL");
 
 		}
 		return bReturn;
@@ -153,12 +242,11 @@ public class GenericWrappers {
 		boolean bReturn = false;
 		try {
 			if (driver.getTitle().equalsIgnoreCase(title)) {
-				Reporter.reportStep("The title of the page matches with the value :" + title, "PASS");
+				Reporter.reportStep("User is Navigated to Correct page :" + title, "PASS");
 				bReturn = true;
 			} else {
 				Reporter.reportStep(
-						"The title of the page:" + driver.getTitle() + " did not match with the value :" + title,
-						"SUCCESS");
+						"User not navigated to :" + title + " and in :" + driver.getTitle(),"FAIL");
 			}
 
 		} catch (Exception e) {
@@ -288,7 +376,7 @@ public class GenericWrappers {
 	
 	protected void scrollToElements(WebElement element) {
 		jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
         try {
             Thread.sleep(1000); // Adding a slight delay to allow the scroll to complete
         } catch (InterruptedException e) {

@@ -19,8 +19,13 @@ public class CurrentApplicationPage extends WebApplicationWrappers {
 	@FindBy(xpath = "//button[@name='new_application']")
 	private WebElement createApplicationBtn;
 
-	@FindBy(xpath = "//input[@name='search']")
-	private WebElement searchTextBox;
+	@FindBy(xpath = "//img[@alt='Peppermint logo']")
+	private WebElement peppermintCard;
+	
+	@FindBy(xpath = "(//button[@type='button'])[4]")
+	private WebElement peppermintContinueButton;
+	
+	
 
 	@FindBy(xpath = "//textarea[@name='description']")
 	private WebElement workSpaceDesc;
@@ -41,23 +46,26 @@ public class CurrentApplicationPage extends WebApplicationWrappers {
 		this.jsExecutor = (JavascriptExecutor) driver;
 	}
 
-	public void clickCreateWorkSpaceBtn() {
+	public void clickCreateApplicationBtn() {
 
-		clickbyXpath(createApplicationBtn, "click on Create Workspace button");
+		clickbyXpath(createApplicationBtn, "click on Create Application button");
 
 	}
+	
 	
 	public void enterWorkSpaceName(String name) {
 		enterValuebyXpath(createWorspaceButton2, "WorkSpace name", name);
 	}
 	
-	public void enterWorkSpaceDesc(String desc) {
-		enterValuebyXpath(workSpaceDesc, "WorkSpace Description", desc);
+	public void clickPeppermintCard() {
+
+		clickbyXpath(peppermintCard, "click on Peppermint Card ");
+
 	}
 	
-	public void clickCreateWorkSpaceBtn2() {
+	public void clickPeppermintContinueBtn() {
 
-		clickbyXpath(createWorspaceButton2, "click on Workspace button");
+		clickbyXpath(peppermintContinueButton, "click on Peppermint Continue");
 
 	}
 	
